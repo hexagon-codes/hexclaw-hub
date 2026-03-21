@@ -1,0 +1,204 @@
+{
+  "version": "1.0.0",
+  "updated_at": "2026-03-21T00:00:00Z",
+  "skills": [
+    {
+      "name": "code-review-pro",
+      "display_name": "Code Review Pro",
+      "description": "自动化代码审查，支持多种语言的代码规范检查、安全漏洞扫描和性能优化建议",
+      "version": "2.1.0",
+      "author": "openclaw",
+      "category": "coding",
+      "tags": ["code-review", "security", "lint"],
+      "downloads": 28430,
+      "rating": 4.8
+    },
+    {
+      "name": "git-commit-craft",
+      "display_name": "Git Commit Craft",
+      "description": "根据 diff 自动生成符合 Conventional Commits 规范的提交信息",
+      "version": "1.4.2",
+      "author": "devtools-hub",
+      "category": "coding",
+      "tags": ["git", "commit", "conventional"],
+      "downloads": 19200,
+      "rating": 4.7
+    },
+    {
+      "name": "test-generator",
+      "display_name": "Test Generator",
+      "description": "根据源代码自动生成单元测试，支持 Jest / Vitest / pytest / Go test",
+      "version": "1.8.0",
+      "author": "testcraft",
+      "category": "coding",
+      "tags": ["testing", "unit-test", "tdd"],
+      "downloads": 15670,
+      "rating": 4.6
+    },
+    {
+      "name": "arxiv-reader",
+      "display_name": "arXiv Reader",
+      "description": "自动解析 arXiv 论文，提取关键信息、方法论和结论，生成结构化摘要",
+      "version": "1.2.1",
+      "author": "research-ai",
+      "category": "research",
+      "tags": ["arxiv", "paper", "summary"],
+      "downloads": 12840,
+      "rating": 4.5
+    },
+    {
+      "name": "web-researcher",
+      "display_name": "Web Researcher",
+      "description": "深度网络调研工具，自动搜索、汇总多个来源的信息并生成调研报告",
+      "version": "2.0.3",
+      "author": "openclaw",
+      "category": "research",
+      "tags": ["search", "report", "web"],
+      "downloads": 22100,
+      "rating": 4.7
+    },
+    {
+      "name": "fact-checker",
+      "display_name": "Fact Checker",
+      "description": "对 Agent 输出内容进行事实核查，交叉验证多个信息源",
+      "version": "1.0.5",
+      "author": "verify-ai",
+      "category": "research",
+      "tags": ["fact-check", "verify", "accuracy"],
+      "downloads": 8930,
+      "rating": 4.4
+    },
+    {
+      "name": "blog-writer",
+      "display_name": "Blog Writer",
+      "description": "根据主题和大纲生成高质量博客文章，支持 SEO 优化和多种写作风格",
+      "version": "1.6.0",
+      "author": "content-craft",
+      "category": "writing",
+      "tags": ["blog", "seo", "content"],
+      "downloads": 17500,
+      "rating": 4.6
+    },
+    {
+      "name": "doc-translator",
+      "display_name": "Doc Translator",
+      "description": "高质量文档翻译，保持格式和术语一致性，支持 30+ 语言",
+      "version": "2.3.1",
+      "author": "polyglot-ai",
+      "category": "writing",
+      "tags": ["translation", "i18n", "docs"],
+      "downloads": 24600,
+      "rating": 4.8
+    },
+    {
+      "name": "copywriting-pro",
+      "display_name": "Copywriting Pro",
+      "description": "营销文案生成，支持广告、社交媒体、邮件等多种场景",
+      "version": "1.3.0",
+      "author": "marketer-ai",
+      "category": "writing",
+      "tags": ["copywriting", "marketing", "ad"],
+      "downloads": 11200,
+      "rating": 4.3
+    },
+    {
+      "name": "csv-analyst",
+      "display_name": "CSV Analyst",
+      "description": "自动分析 CSV/Excel 数据集，生成统计摘要、可视化图表和洞察报告",
+      "version": "1.5.2",
+      "author": "data-works",
+      "category": "data",
+      "tags": ["csv", "analytics", "visualization"],
+      "downloads": 13400,
+      "rating": 4.5
+    },
+    {
+      "name": "sql-assistant",
+      "display_name": "SQL Assistant",
+      "description": "自然语言转 SQL 查询，支持 PostgreSQL / MySQL / SQLite 方言",
+      "version": "2.0.0",
+      "author": "dbtools",
+      "category": "data",
+      "tags": ["sql", "database", "query"],
+      "downloads": 20800,
+      "rating": 4.7
+    },
+    {
+      "name": "json-transformer",
+      "display_name": "JSON Transformer",
+      "description": "JSON 数据格式转换、清洗和验证工具，支持 JSONPath 和 Schema 校验",
+      "version": "1.1.3",
+      "author": "data-works",
+      "category": "data",
+      "tags": ["json", "transform", "schema"],
+      "downloads": 9700,
+      "rating": 4.2
+    },
+    {
+      "name": "cron-scheduler",
+      "display_name": "Cron Scheduler",
+      "description": "智能 Cron 任务编排，根据自然语言描述生成复杂的调度计划",
+      "version": "1.2.0",
+      "author": "ops-toolkit",
+      "category": "automation",
+      "tags": ["cron", "scheduler", "ops"],
+      "downloads": 7600,
+      "rating": 4.3
+    },
+    {
+      "name": "api-integrator",
+      "display_name": "API Integrator",
+      "description": "快速集成第三方 API，自动生成请求代码和错误处理逻辑",
+      "version": "1.7.1",
+      "author": "openclaw",
+      "category": "automation",
+      "tags": ["api", "integration", "http"],
+      "downloads": 16300,
+      "rating": 4.6
+    },
+    {
+      "name": "file-organizer",
+      "display_name": "File Organizer",
+      "description": "智能文件分类和整理，根据内容自动重命名、分类和归档",
+      "version": "1.0.8",
+      "author": "productivity-lab",
+      "category": "automation",
+      "tags": ["files", "organize", "rename"],
+      "downloads": 10500,
+      "rating": 4.1
+    },
+    {
+      "name": "meeting-notes",
+      "display_name": "Meeting Notes",
+      "description": "会议记录整理和摘要生成，自动提取行动项和决议",
+      "version": "1.4.0",
+      "author": "productivity-lab",
+      "category": "productivity",
+      "tags": ["meeting", "notes", "summary"],
+      "downloads": 14200,
+      "rating": 4.5
+    },
+    {
+      "name": "email-composer",
+      "display_name": "Email Composer",
+      "description": "智能邮件撰写助手，根据上下文生成专业的商务邮件",
+      "version": "1.2.5",
+      "author": "office-ai",
+      "category": "productivity",
+      "tags": ["email", "business", "compose"],
+      "downloads": 18700,
+      "rating": 4.6
+    },
+    {
+      "name": "daily-digest",
+      "display_name": "Daily Digest",
+      "description": "每日信息汇总，自动收集和整理来自多个渠道的更新和通知",
+      "version": "1.1.0",
+      "author": "productivity-lab",
+      "category": "productivity",
+      "tags": ["digest", "news", "daily"],
+      "downloads": 6800,
+      "rating": 4.2
+    }
+  ]
+}
