@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "updated_at": "2026-03-21T00:00:00Z",
+  "version": "1.1.0",
+  "updated_at": "2026-03-21T15:30:00Z",
   "skills": [
     {
       "name": "code-review-pro",
@@ -199,6 +199,138 @@
       "tags": ["digest", "news", "daily"],
       "downloads": 6800,
       "rating": 4.2
+    },
+    {
+      "name": "self-improving-agent",
+      "display_name": "Self-Improving Agent",
+      "description": "记录失败与用户纠正，形成可复用的改进要点（ClawHub 热门改编）",
+      "version": "1.0.0",
+      "author": "clawhub-popular",
+      "category": "productivity",
+      "tags": ["agent", "learning", "feedback"],
+      "downloads": 95200,
+      "rating": 4.7
+    },
+    {
+      "name": "gog",
+      "display_name": "GoG (Google Workspace)",
+      "description": "Google Workspace（Gmail/日历/Drive 等）CLI 使用指引（ClawHub 热门改编）",
+      "version": "1.0.0",
+      "author": "clawhub-popular",
+      "category": "productivity",
+      "tags": ["google", "cli", "workspace"],
+      "downloads": 93100,
+      "rating": 4.7
+    },
+    {
+      "name": "tavily-search",
+      "display_name": "Tavily Search",
+      "description": "使用 Tavily API 做面向 AI 的网页检索摘要（ClawHub 热门改编）",
+      "version": "1.0.0",
+      "author": "clawhub-popular",
+      "category": "research",
+      "tags": ["search", "api", "tavily"],
+      "downloads": 91800,
+      "rating": 4.6
+    },
+    {
+      "name": "find-skills",
+      "display_name": "Find Skills",
+      "description": "帮用户发现/匹配可安装的 Agent 技能（ClawHub 热门改编）",
+      "version": "1.0.0",
+      "author": "clawhub-popular",
+      "category": "productivity",
+      "tags": ["discovery", "skills", "marketplace"],
+      "downloads": 90500,
+      "rating": 4.6
+    },
+    {
+      "name": "summarize",
+      "display_name": "Summarize",
+      "description": "总结网页、PDF、音视频等的流程与提示词模板（ClawHub 热门改编）",
+      "version": "1.0.0",
+      "author": "clawhub-popular",
+      "category": "writing",
+      "tags": ["summary", "url", "cli"],
+      "downloads": 89200,
+      "rating": 4.6
+    },
+    {
+      "name": "github",
+      "display_name": "GitHub CLI",
+      "description": "使用 GitHub CLI `gh` 处理 issue/PR/Actions/API（ClawHub 热门改编）",
+      "version": "1.0.0",
+      "author": "clawhub-popular",
+      "category": "coding",
+      "tags": ["github", "cli", "gh"],
+      "downloads": 88400,
+      "rating": 4.7
+    },
+    {
+      "name": "agent-browser",
+      "display_name": "Agent Browser",
+      "description": "浏览器自动化场景下的安全与步骤设计（ClawHub 热门改编）",
+      "version": "1.0.0",
+      "author": "clawhub-popular",
+      "category": "automation",
+      "tags": ["browser", "automation", "safety"],
+      "downloads": 87100,
+      "rating": 4.5
+    },
+    {
+      "name": "clawhub-weather",
+      "display_name": "ClawHub Weather",
+      "description": "天气查询与出行提示（ClawHub 热门改编，可与内置天气能力并存）",
+      "version": "1.0.0",
+      "author": "clawhub-popular",
+      "category": "productivity",
+      "tags": ["weather", "outdoor"],
+      "downloads": 86200,
+      "rating": 4.5
+    },
+    {
+      "name": "polymarketodds",
+      "display_name": "Polymarket Odds",
+      "description": "预测市场（如 Polymarket）数据解读与风险说明（ClawHub 热门改编）",
+      "version": "1.0.0",
+      "author": "clawhub-popular",
+      "category": "data",
+      "tags": ["prediction", "markets", "risk"],
+      "downloads": 84900,
+      "rating": 4.4
+    },
+    {
+      "name": "proactive-agent",
+      "display_name": "Proactive Agent",
+      "description": "主动提醒与跟进任务的边界与话术（ClawHub 热门改编）",
+      "version": "1.0.0",
+      "author": "clawhub-popular",
+      "category": "productivity",
+      "tags": ["proactive", "assistant"],
+      "downloads": 83600,
+      "rating": 4.5
+    },
+    {
+      "name": "sonoscli",
+      "display_name": "Sonos CLI",
+      "description": "Sonos 音响 CLI 控制与排障提示（ClawHub 热门改编）",
+      "version": "1.0.0",
+      "author": "clawhub-popular",
+      "category": "automation",
+      "tags": ["audio", "sonos", "cli"],
+      "downloads": 82100,
+      "rating": 4.4
+    },
+    {
+      "name": "notion",
+      "display_name": "Notion",
+      "description": "Notion 页面/数据库与 API 集成思路（ClawHub 热门改编）",
+      "version": "1.0.0",
+      "author": "clawhub-popular",
+      "category": "productivity",
+      "tags": ["notion", "docs", "api"],
+      "downloads": 80800,
+      "rating": 4.6
     }
   ]
 }
