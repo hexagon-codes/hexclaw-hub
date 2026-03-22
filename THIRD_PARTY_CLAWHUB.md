@@ -20,3 +20,21 @@
 | proactive-agent | https://clawhub.ai/skills/proactive-agent | halthelobster |
 | sonoscli | https://clawhub.ai/skills/sonoscli | steipete |
 | notion | https://clawhub.ai/skills/notion | steipete |
+
+## OpenClaw / playbooks 改编收录说明
+
+下列技能条目参考 **OpenClaw Skills / playbooks** 公开页面。  
+仓库中的 `.md` 文件为 **针对 HexClaw 使用方式重写** 的提示词与行为说明，**不等同于** OpenClaw 上各技能包内的原始 `SKILL.md` 全文。
+
+- 原始发现页：`https://playbooks.com/skills/openclaw/skills/{slug}`
+- 具体使用、再分发与许可证信息，以来源页面和原仓库展示信息为准。
+
+| slug | OpenClaw / playbooks | 原作者 handle |
+|------|-----------------------|----------------|
+| legal-cog | https://playbooks.com/skills/openclaw/skills/legal-cog | nitishgargiitd |
+| law | https://playbooks.com/skills/openclaw/skills/law | ivangdavila |
+| lawyer | https://playbooks.com/skills/openclaw/skills/lawyer | ivangdavila |
+| docs-cog | https://playbooks.com/skills/openclaw/skills/docs-cog | CellCog / nitishgargiitd |
+| tavily-search-pro | https://playbooks.com/skills/openclaw/skills/tavily-search-pro | Leo / shaharsha |
+| openclaw-agent-browser | https://playbooks.com/skills/openclaw/skills/openclaw-agent-browser | Ian Nuttall / bodietron |
+| openclaw-notion-skill | https://playbooks.com/skills/openclaw/skills/openclaw-notion-skill | moikapy |

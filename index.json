@@ -1,6 +1,6 @@
 {
-  "version": "1.1.0",
-  "updated_at": "2026-03-21T15:30:00Z",
+  "version": "1.3.0",
+  "updated_at": "2026-03-22T04:20:00Z",
   "skills": [
     {
       "name": "code-review-pro",
@@ -199,6 +199,83 @@
       "tags": ["digest", "news", "daily"],
       "downloads": 6800,
       "rating": 4.2
+    },
+    {
+      "name": "legal-cog",
+      "display_name": "Legal Cog",
+      "description": "法律文书、隐私政策、NDA 与合规清单生成助手（OpenClaw 改编）",
+      "version": "1.0.0",
+      "author": "openclaw-adapted",
+      "category": "writing",
+      "tags": ["legal", "contracts", "compliance"],
+      "downloads": 2500,
+      "rating": 4.6
+    },
+    {
+      "name": "law",
+      "display_name": "Law",
+      "description": "按用户角色切换表达深度的法律信息与研究辅助技能（OpenClaw 改编）",
+      "version": "1.0.0",
+      "author": "openclaw-adapted",
+      "category": "research",
+      "tags": ["law", "irac", "jurisdiction"],
+      "downloads": 2100,
+      "rating": 4.5
+    },
+    {
+      "name": "lawyer",
+      "display_name": "Lawyer",
+      "description": "合同审阅、条款红旗识别与基础法务文案起草（OpenClaw 改编）",
+      "version": "1.0.0",
+      "author": "openclaw-adapted",
+      "category": "productivity",
+      "tags": ["contract", "legal", "review"],
+      "downloads": 1700,
+      "rating": 4.6
+    },
+    {
+      "name": "docs-cog",
+      "display_name": "Docs Cog",
+      "description": "专业文档与 PDF 交付工作流，适合 proposal、report、invoice、resume、contract（OpenClaw 改编）",
+      "version": "1.0.0",
+      "author": "openclaw-adapted",
+      "category": "writing",
+      "tags": ["documents", "pdf", "proposal"],
+      "downloads": 1900,
+      "rating": 4.7
+    },
+    {
+      "name": "tavily-search-pro",
+      "display_name": "Tavily Search Pro",
+      "description": "Tavily 五模式检索工作流：search、extract、crawl、map、research（OpenClaw 改编）",
+      "version": "1.0.0",
+      "author": "openclaw-adapted",
+      "category": "research",
+      "tags": ["tavily", "search", "research"],
+      "downloads": 1600,
+      "rating": 4.6
+    },
+    {
+      "name": "openclaw-agent-browser",
+      "display_name": "OpenClaw Agent Browser",
+      "description": "带状态保持、截图、抓取与表单自动化规范的浏览器工作流（OpenClaw 改编）",
+      "version": "1.0.0",
+      "author": "openclaw-adapted",
+      "category": "automation",
+      "tags": ["browser", "automation", "scraping"],
+      "downloads": 2400,
+      "rating": 4.6
+    },
+    {
+      "name": "openclaw-notion-skill",
+      "display_name": "OpenClaw Notion Skill",
+      "description": "Notion 页面与数据库的读写、查询、追加和流程同步（OpenClaw 改编）",
+      "version": "1.0.0",
+      "author": "openclaw-adapted",
+      "category": "productivity",
+      "tags": ["notion", "database", "workspace"],
+      "downloads": 1500,
+      "rating": 4.5
     },
     {
       "name": "self-improving-agent",
