@@ -1,10 +1,13 @@
-# HexClaw Hub — 技能市场数据仓库
+# HexClaw Hub — 技能 & MCP 市场
 
-**GitHub 仓库名：`hexagon-codes/hexclaw-hub`**（与 HexClaw 引擎仓库 `hexclaw` 分离，单独维护技能内容。）
+**GitHub 仓库名：`hexagon-codes/hexclaw-hub`**（与 HexClaw 引擎仓库 `hexclaw` 分离，单独维护市场内容。）
 
-HexClaw Agent 的在线技能目录。技能以 Markdown 格式定义，通过 YAML frontmatter 描述元数据，正文作为 LLM 系统指令注入上下文。
+HexClaw Agent 的在线技能目录和 MCP 服务器市场。
 
-当前仓库已收录 **37** 个技能条目，包含三类来源：
+- **技能 (Skills)**：以 Markdown 格式定义，通过 YAML frontmatter 描述元数据，正文作为 LLM 系统指令注入上下文
+- **MCP 服务器**：以 JSON 格式定义，包含安装命令、参数、环境变量等，支持一键安装
+
+当前仓库已收录 **37** 个技能条目 + **15** 个 MCP 服务器，包含三类来源：
 
 | 来源 | 数量 | 说明 |
 |------|------|------|
@@ -18,7 +21,8 @@ HexClaw Agent 的在线技能目录。技能以 Markdown 格式定义，通过 Y
 
 ```text
 hexclaw-hub/
-├── index.json              # 技能目录索引
+├── index.json              # 技能目录索引 (37 skills)
+├── mcp-registry.json       # MCP 服务器市场 (15 servers)
 ├── THIRD_PARTY_CLAWHUB.md  # ClawHub 热门榜改编条目的来源说明
 ├── skills/                 # 技能文件
 │   ├── code-review-pro.md
@@ -27,6 +31,26 @@ hexclaw-hub/
 │   └── ...
 └── README.md
 ```
+
+## MCP 服务器市场
+
+`mcp-registry.json` 收录了 15 个热门 MCP 服务器，涵盖 11 个分类：
+
+| 分类 | 服务器 | 来源 |
+|------|--------|------|
+| 推理增强 | Sequential Thinking | 官方 |
+| 系统工具 | Filesystem | 官方 |
+| 开发工具 | GitHub, Git | 官方 |
+| 搜索引擎 | Brave Search, Exa Search | 官方/社区 |
+| 网页工具 | Fetch | 官方 |
+| 文档查询 | Context7 | 社区 |
+| 浏览器 | Playwright | 社区 |
+| 数据库 | SQLite, PostgreSQL, MySQL | 官方/社区 |
+| 记忆存储 | Memory (Knowledge Graph) | 官方 |
+| 通讯协作 | Slack | 官方 |
+| 实用工具 | Time | 官方 |
+
+数据来源：[Smithery.ai](https://smithery.ai) 热门排行 + [MCP 官方参考实现](https://github.com/modelcontextprotocol/servers)。
 
 ## 仓库约定
 
