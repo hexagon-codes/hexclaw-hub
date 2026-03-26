@@ -548,6 +548,47 @@
       "rating": 4.1,
       "tags": ["vercel", "deploy", "hosting", "serverless"]
     }
+    ,
+    {
+      "name": "car-database",
+      "display_name": "Car Database",
+      "description": "汽车数据库 — 车型搜索、参数查询、车型对比、购车推荐",
+      "category": "automotive",
+      "command": "npx",
+      "args": ["-y", "@oshion/python-mcp-carsearch-demo"],
+      "source": "community",
+      "source_url": "https://smithery.ai/server/@oshion/python-mcp-carsearch-demo",
+      "downloads": 320,
+      "rating": 4.0,
+      "tags": ["car", "vehicle", "database", "search", "specs"]
+    },
+    {
+      "name": "car-price-fipe",
+      "display_name": "Car Price (FIPE)",
+      "description": "汽车价格查询 — 基于 FIPE 官方 API 的实时车辆估价、品牌/车型/年份价格",
+      "category": "automotive",
+      "command": "npx",
+      "args": ["-y", "@yusaaztrk/car-price-mcp-main"],
+      "source": "community",
+      "source_url": "https://smithery.ai/server/@yusaaztrk/car-price-mcp-main",
+      "downloads": 180,
+      "rating": 3.9,
+      "tags": ["car", "price", "valuation", "fipe"]
+    },
+    {
+      "name": "vehicle-diagnostics",
+      "display_name": "Vehicle Diagnostics (OBD-II)",
+      "description": "汽车诊断 — OBD-II 故障码解读、传感器数据分析、维修建议",
+      "category": "automotive",
+      "command": "npx",
+      "args": ["-y", "mcp-vehicle-diagnostics"],
+      "config_hint": "需要 OBD-II 蓝牙适配器连接车辆（如 ELM327），或使用模拟模式",
+      "source": "community",
+      "source_url": "https://github.com/castlebbs/Vehicle-Diagnostic-Assistant",
+      "downloads": 150,
+      "rating": 4.1,
+      "tags": ["car", "obd", "diagnostics", "dtc", "vehicle", "repair"]
+    }
   ],
   "categories": {
     "system": "系统工具",
@@ -567,6 +608,7 @@
     "monitoring": "监控告警",
     "cloud": "云服务",
     "finance": "金融支付",
-    "media": "媒体内容"
+    "media": "媒体内容",
+    "automotive": "汽车出行"
   }
 }
