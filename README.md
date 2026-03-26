@@ -7,7 +7,7 @@ HexClaw Agent 的在线技能目录和 MCP 服务器市场。
 - **技能 (Skills)**：以 Markdown 格式定义，通过 YAML frontmatter 描述元数据，正文作为 LLM 系统指令注入上下文
 - **MCP 服务器**：以 JSON 格式定义，包含安装命令、参数、环境变量等，支持一键安装
 
-当前仓库已收录 **37** 个技能条目 + **15** 个 MCP 服务器，包含三类来源：
+当前仓库已收录 **37** 个技能条目 + **38** 个 MCP 服务器，包含三类来源：
 
 | 来源 | 数量 | 说明 |
 |------|------|------|
@@ -34,23 +34,30 @@ hexclaw-hub/
 
 ## MCP 服务器市场
 
-`mcp-registry.json` 收录了 15 个热门 MCP 服务器，涵盖 11 个分类：
+`mcp-registry.json` 收录了 38 个热门 MCP 服务器，涵盖 18 个分类：
 
-| 分类 | 服务器 | 来源 |
-|------|--------|------|
-| 推理增强 | Sequential Thinking | 官方 |
-| 系统工具 | Filesystem | 官方 |
-| 开发工具 | GitHub, Git | 官方 |
-| 搜索引擎 | Brave Search, Exa Search | 官方/社区 |
-| 网页工具 | Fetch | 官方 |
-| 文档查询 | Context7 | 社区 |
-| 浏览器 | Playwright | 社区 |
-| 数据库 | SQLite, PostgreSQL, MySQL | 官方/社区 |
-| 记忆存储 | Memory (Knowledge Graph) | 官方 |
-| 通讯协作 | Slack | 官方 |
-| 实用工具 | Time | 官方 |
+| 分类 | 服务器 |
+|------|--------|
+| 推理增强 | Sequential Thinking |
+| 系统工具 | Filesystem |
+| 开发工具 | GitHub, Git, Postman |
+| 搜索引擎 | Brave Search, Exa Search, Tavily Search |
+| 网页工具 | Fetch, Firecrawl |
+| 文档查询 | Context7 |
+| 自动化 | Playwright, Puppeteer |
+| 数据库 | SQLite, PostgreSQL, MySQL, Redis, MongoDB |
+| 记忆存储 | Memory (Knowledge Graph) |
+| 通讯协作 | Slack, Discord, Telegram, Email |
+| 效率工具 | Notion, Linear, Jira, Obsidian, Google Drive |
+| 运维部署 | Docker, Kubernetes, Cloudflare, Vercel |
+| 监控告警 | Sentry |
+| 云服务 | AWS |
+| 金融支付 | Stripe |
+| 地图定位 | Google Maps |
+| 媒体内容 | YouTube |
+| 实用工具 | Time |
 
-数据来源：[Smithery.ai](https://smithery.ai) 热门排行 + [MCP 官方参考实现](https://github.com/modelcontextprotocol/servers)。
+数据来源：[Smithery.ai](https://smithery.ai) 热门排行 + [mcp.so](https://mcp.so) + [Glama.ai](https://glama.ai/mcp/servers) + [MCP 官方参考实现](https://github.com/modelcontextprotocol/servers)。
 
 ## 仓库约定
 
