@@ -1,6 +1,6 @@
 {
-  "version": "1.3.0",
-  "updated_at": "2026-03-22T04:20:00Z",
+  "version": "1.4.0",
+  "updated_at": "2026-03-26T14:00:00Z",
   "skills": [
     {
       "name": "code-review-pro",
@@ -9,7 +9,11 @@
       "version": "2.1.0",
       "author": "openclaw",
       "category": "coding",
-      "tags": ["code-review", "security", "lint"],
+      "tags": [
+        "code-review",
+        "security",
+        "lint"
+      ],
       "downloads": 28430,
       "rating": 4.8
     },
@@ -20,7 +24,11 @@
       "version": "1.4.2",
       "author": "devtools-hub",
       "category": "coding",
-      "tags": ["git", "commit", "conventional"],
+      "tags": [
+        "git",
+        "commit",
+        "conventional"
+      ],
       "downloads": 19200,
       "rating": 4.7
     },
@@ -31,7 +39,11 @@
       "version": "1.8.0",
       "author": "testcraft",
       "category": "coding",
-      "tags": ["testing", "unit-test", "tdd"],
+      "tags": [
+        "testing",
+        "unit-test",
+        "tdd"
+      ],
       "downloads": 15670,
       "rating": 4.6
     },
@@ -42,7 +54,11 @@
       "version": "1.2.1",
       "author": "research-ai",
       "category": "research",
-      "tags": ["arxiv", "paper", "summary"],
+      "tags": [
+        "arxiv",
+        "paper",
+        "summary"
+      ],
       "downloads": 12840,
       "rating": 4.5
     },
@@ -53,7 +69,11 @@
       "version": "2.0.3",
       "author": "openclaw",
       "category": "research",
-      "tags": ["search", "report", "web"],
+      "tags": [
+        "search",
+        "report",
+        "web"
+      ],
       "downloads": 22100,
       "rating": 4.7
     },
@@ -64,7 +84,11 @@
       "version": "1.0.5",
       "author": "verify-ai",
       "category": "research",
-      "tags": ["fact-check", "verify", "accuracy"],
+      "tags": [
+        "fact-check",
+        "verify",
+        "accuracy"
+      ],
       "downloads": 8930,
       "rating": 4.4
     },
@@ -75,7 +99,11 @@
       "version": "1.6.0",
       "author": "content-craft",
       "category": "writing",
-      "tags": ["blog", "seo", "content"],
+      "tags": [
+        "blog",
+        "seo",
+        "content"
+      ],
       "downloads": 17500,
       "rating": 4.6
     },
@@ -86,7 +114,11 @@
       "version": "2.3.1",
       "author": "polyglot-ai",
       "category": "writing",
-      "tags": ["translation", "i18n", "docs"],
+      "tags": [
+        "translation",
+        "i18n",
+        "docs"
+      ],
       "downloads": 24600,
       "rating": 4.8
     },
@@ -97,7 +129,11 @@
       "version": "1.3.0",
       "author": "marketer-ai",
       "category": "writing",
-      "tags": ["copywriting", "marketing", "ad"],
+      "tags": [
+        "copywriting",
+        "marketing",
+        "ad"
+      ],
       "downloads": 11200,
       "rating": 4.3
     },
@@ -108,7 +144,11 @@
       "version": "1.5.2",
       "author": "data-works",
       "category": "data",
-      "tags": ["csv", "analytics", "visualization"],
+      "tags": [
+        "csv",
+        "analytics",
+        "visualization"
+      ],
       "downloads": 13400,
       "rating": 4.5
     },
@@ -119,7 +159,11 @@
       "version": "2.0.0",
       "author": "dbtools",
       "category": "data",
-      "tags": ["sql", "database", "query"],
+      "tags": [
+        "sql",
+        "database",
+        "query"
+      ],
       "downloads": 20800,
       "rating": 4.7
     },
@@ -130,7 +174,11 @@
       "version": "1.1.3",
       "author": "data-works",
       "category": "data",
-      "tags": ["json", "transform", "schema"],
+      "tags": [
+        "json",
+        "transform",
+        "schema"
+      ],
       "downloads": 9700,
       "rating": 4.2
     },
@@ -141,7 +189,11 @@
       "version": "1.2.0",
       "author": "ops-toolkit",
       "category": "automation",
-      "tags": ["cron", "scheduler", "ops"],
+      "tags": [
+        "cron",
+        "scheduler",
+        "ops"
+      ],
       "downloads": 7600,
       "rating": 4.3
     },
@@ -152,7 +204,11 @@
       "version": "1.7.1",
       "author": "openclaw",
       "category": "automation",
-      "tags": ["api", "integration", "http"],
+      "tags": [
+        "api",
+        "integration",
+        "http"
+      ],
       "downloads": 16300,
       "rating": 4.6
     },
@@ -163,7 +219,11 @@
       "version": "1.0.8",
       "author": "productivity-lab",
       "category": "automation",
-      "tags": ["files", "organize", "rename"],
+      "tags": [
+        "files",
+        "organize",
+        "rename"
+      ],
       "downloads": 10500,
       "rating": 4.1
     },
@@ -174,7 +234,11 @@
       "version": "1.4.0",
       "author": "productivity-lab",
       "category": "productivity",
-      "tags": ["meeting", "notes", "summary"],
+      "tags": [
+        "meeting",
+        "notes",
+        "summary"
+      ],
       "downloads": 14200,
       "rating": 4.5
     },
@@ -185,7 +249,11 @@
       "version": "1.2.5",
       "author": "office-ai",
       "category": "productivity",
-      "tags": ["email", "business", "compose"],
+      "tags": [
+        "email",
+        "business",
+        "compose"
+      ],
       "downloads": 18700,
       "rating": 4.6
     },
@@ -196,7 +264,11 @@
       "version": "1.1.0",
       "author": "productivity-lab",
       "category": "productivity",
-      "tags": ["digest", "news", "daily"],
+      "tags": [
+        "digest",
+        "news",
+        "daily"
+      ],
       "downloads": 6800,
       "rating": 4.2
     },
@@ -207,7 +279,11 @@
       "version": "1.0.0",
       "author": "openclaw-adapted",
       "category": "writing",
-      "tags": ["legal", "contracts", "compliance"],
+      "tags": [
+        "legal",
+        "contracts",
+        "compliance"
+      ],
       "downloads": 2500,
       "rating": 4.6
     },
@@ -218,7 +294,11 @@
       "version": "1.0.0",
       "author": "openclaw-adapted",
       "category": "research",
-      "tags": ["law", "irac", "jurisdiction"],
+      "tags": [
+        "law",
+        "irac",
+        "jurisdiction"
+      ],
       "downloads": 2100,
       "rating": 4.5
     },
@@ -229,7 +309,11 @@
       "version": "1.0.0",
       "author": "openclaw-adapted",
       "category": "productivity",
-      "tags": ["contract", "legal", "review"],
+      "tags": [
+        "contract",
+        "legal",
+        "review"
+      ],
       "downloads": 1700,
       "rating": 4.6
     },
@@ -240,7 +324,11 @@
       "version": "1.0.0",
       "author": "openclaw-adapted",
       "category": "writing",
-      "tags": ["documents", "pdf", "proposal"],
+      "tags": [
+        "documents",
+        "pdf",
+        "proposal"
+      ],
       "downloads": 1900,
       "rating": 4.7
     },
@@ -251,7 +339,11 @@
       "version": "1.0.0",
       "author": "openclaw-adapted",
       "category": "research",
-      "tags": ["tavily", "search", "research"],
+      "tags": [
+        "tavily",
+        "search",
+        "research"
+      ],
       "downloads": 1600,
       "rating": 4.6
     },
@@ -262,7 +354,11 @@
       "version": "1.0.0",
       "author": "openclaw-adapted",
       "category": "automation",
-      "tags": ["browser", "automation", "scraping"],
+      "tags": [
+        "browser",
+        "automation",
+        "scraping"
+      ],
       "downloads": 2400,
       "rating": 4.6
     },
@@ -273,7 +369,11 @@
       "version": "1.0.0",
       "author": "openclaw-adapted",
       "category": "productivity",
-      "tags": ["notion", "database", "workspace"],
+      "tags": [
+        "notion",
+        "database",
+        "workspace"
+      ],
       "downloads": 1500,
       "rating": 4.5
     },
@@ -284,7 +384,11 @@
       "version": "1.0.0",
       "author": "clawhub-popular",
       "category": "productivity",
-      "tags": ["agent", "learning", "feedback"],
+      "tags": [
+        "agent",
+        "learning",
+        "feedback"
+      ],
       "downloads": 95200,
       "rating": 4.7
     },
@@ -295,7 +399,11 @@
       "version": "1.0.0",
       "author": "clawhub-popular",
       "category": "productivity",
-      "tags": ["google", "cli", "workspace"],
+      "tags": [
+        "google",
+        "cli",
+        "workspace"
+      ],
       "downloads": 93100,
       "rating": 4.7
     },
@@ -306,7 +414,11 @@
       "version": "1.0.0",
       "author": "clawhub-popular",
       "category": "research",
-      "tags": ["search", "api", "tavily"],
+      "tags": [
+        "search",
+        "api",
+        "tavily"
+      ],
       "downloads": 91800,
       "rating": 4.6
     },
@@ -317,7 +429,11 @@
       "version": "1.0.0",
       "author": "clawhub-popular",
       "category": "productivity",
-      "tags": ["discovery", "skills", "marketplace"],
+      "tags": [
+        "discovery",
+        "skills",
+        "marketplace"
+      ],
       "downloads": 90500,
       "rating": 4.6
     },
@@ -328,7 +444,11 @@
       "version": "1.0.0",
       "author": "clawhub-popular",
       "category": "writing",
-      "tags": ["summary", "url", "cli"],
+      "tags": [
+        "summary",
+        "url",
+        "cli"
+      ],
       "downloads": 89200,
       "rating": 4.6
     },
@@ -339,7 +459,11 @@
       "version": "1.0.0",
       "author": "clawhub-popular",
       "category": "coding",
-      "tags": ["github", "cli", "gh"],
+      "tags": [
+        "github",
+        "cli",
+        "gh"
+      ],
       "downloads": 88400,
       "rating": 4.7
     },
@@ -350,7 +474,11 @@
       "version": "1.0.0",
       "author": "clawhub-popular",
       "category": "automation",
-      "tags": ["browser", "automation", "safety"],
+      "tags": [
+        "browser",
+        "automation",
+        "safety"
+      ],
       "downloads": 87100,
       "rating": 4.5
     },
@@ -361,7 +489,10 @@
       "version": "1.0.0",
       "author": "clawhub-popular",
       "category": "productivity",
-      "tags": ["weather", "outdoor"],
+      "tags": [
+        "weather",
+        "outdoor"
+      ],
       "downloads": 86200,
       "rating": 4.5
     },
@@ -372,7 +503,11 @@
       "version": "1.0.0",
       "author": "clawhub-popular",
       "category": "data",
-      "tags": ["prediction", "markets", "risk"],
+      "tags": [
+        "prediction",
+        "markets",
+        "risk"
+      ],
       "downloads": 84900,
       "rating": 4.4
     },
@@ -383,7 +518,10 @@
       "version": "1.0.0",
       "author": "clawhub-popular",
       "category": "productivity",
-      "tags": ["proactive", "assistant"],
+      "tags": [
+        "proactive",
+        "assistant"
+      ],
       "downloads": 83600,
       "rating": 4.5
     },
@@ -394,7 +532,11 @@
       "version": "1.0.0",
       "author": "clawhub-popular",
       "category": "automation",
-      "tags": ["audio", "sonos", "cli"],
+      "tags": [
+        "audio",
+        "sonos",
+        "cli"
+      ],
       "downloads": 82100,
       "rating": 4.4
     },
@@ -405,9 +547,79 @@
       "version": "1.0.0",
       "author": "clawhub-popular",
       "category": "productivity",
-      "tags": ["notion", "docs", "api"],
+      "tags": [
+        "notion",
+        "docs",
+        "api"
+      ],
       "downloads": 80800,
       "rating": 4.6
+    },
+    {
+      "name": "honda-crv-maintenance",
+      "display_name": "Honda CR-V Maintenance",
+      "description": "本田 CR-V 全周期保养顾问 — 保养周期、配件规格、故障排查、费用预估",
+      "version": "1.0.0",
+      "author": "hexclaw",
+      "category": "automotive",
+      "tags": [
+        "honda",
+        "crv",
+        "maintenance",
+        "car"
+      ],
+      "downloads": 0,
+      "rating": 0
+    },
+    {
+      "name": "car-maintenance-advisor",
+      "display_name": "Car Maintenance Advisor",
+      "description": "通用汽车保养顾问 — 保养周期提醒、故障码解读、维修费用评估、配件推荐",
+      "version": "1.0.0",
+      "author": "hexclaw",
+      "category": "automotive",
+      "tags": [
+        "car",
+        "maintenance",
+        "automotive",
+        "repair",
+        "obd"
+      ],
+      "downloads": 0,
+      "rating": 0
+    },
+    {
+      "name": "travel-planner",
+      "display_name": "Travel Planner",
+      "description": "智能旅行规划师 — 行程规划、机票酒店比价、签证攻略、当地美食和文化",
+      "version": "1.0.0",
+      "author": "hexclaw",
+      "category": "productivity",
+      "tags": [
+        "travel",
+        "trip",
+        "hotel",
+        "flight",
+        "visa",
+        "food"
+      ],
+      "downloads": 0,
+      "rating": 0
+    },
+    {
+      "name": "travel-packing-checklist",
+      "display_name": "Travel Packing Checklist",
+      "description": "旅行打包清单助手 — 根据目的地、天数、季节自动生成个性化打包清单",
+      "version": "1.0.0",
+      "author": "hexclaw",
+      "category": "productivity",
+      "tags": [
+        "travel",
+        "packing",
+        "checklist"
+      ],
+      "downloads": 0,
+      "rating": 0
     }
   ]
 }
