@@ -588,6 +588,75 @@
       "downloads": 150,
       "rating": 4.1,
       "tags": ["car", "obd", "diagnostics", "dtc", "vehicle", "repair"]
+    },
+    {
+      "name": "video-audio-editor",
+      "display_name": "Video & Audio Editor (FFmpeg)",
+      "description": "视频音频编辑 — 基于 FFmpeg 的剪辑、转码、字幕、拼接、特效",
+      "category": "video",
+      "command": "npx",
+      "args": ["-y", "video-audio-mcp"],
+      "config_hint": "需要本地安装 FFmpeg (brew install ffmpeg 或 apt install ffmpeg)",
+      "source": "community",
+      "source_url": "https://github.com/misbahsy/video-audio-mcp",
+      "downloads": 1800,
+      "rating": 4.4,
+      "tags": ["video", "audio", "ffmpeg", "edit", "subtitle", "transcode"]
+    },
+    {
+      "name": "ffmpeg-video-processor",
+      "display_name": "FFmpeg Video Processor",
+      "description": "FFmpeg 视频处理 — 格式转换、裁剪、滤镜、水印、音频提取",
+      "category": "video",
+      "command": "npx",
+      "args": ["-y", "@bitscorp-mcp/mcp-ffmpeg"],
+      "config_hint": "需要本地安装 FFmpeg",
+      "source": "community",
+      "source_url": "https://smithery.ai/server/@bitscorp-mcp/mcp-ffmpeg",
+      "downloads": 900,
+      "rating": 4.2,
+      "tags": ["ffmpeg", "video", "convert", "filter", "watermark"]
+    },
+    {
+      "name": "wolfram-alpha",
+      "display_name": "Wolfram Alpha",
+      "description": "计算知识引擎 — 数学计算、方程求解、函数图像、科学数据查询、单位换算",
+      "category": "education",
+      "command": "npx",
+      "args": ["-y", "@henryhawke/wolfram-llm-mcp"],
+      "env": {"WOLFRAM_APP_ID": ""},
+      "config_hint": "需要 Wolfram Alpha API AppID (https://developer.wolframalpha.com)",
+      "source": "community",
+      "source_url": "https://smithery.ai/server/@henryhawke/wolfram-llm-mcp",
+      "downloads": 2200,
+      "rating": 4.5,
+      "tags": ["math", "wolfram", "compute", "equation", "science", "education"]
+    },
+    {
+      "name": "math-mcp",
+      "display_name": "Math Operations",
+      "description": "数学运算 — 精确的算术、统计、三角函数计算，避免 LLM 计算误差",
+      "category": "education",
+      "command": "npx",
+      "args": ["-y", "@EthanHenrickson/math-mcp"],
+      "source": "community",
+      "source_url": "https://github.com/EthanHenrickson/math-mcp",
+      "downloads": 1500,
+      "rating": 4.3,
+      "tags": ["math", "calculator", "statistics", "trigonometry", "education"]
+    },
+    {
+      "name": "mcp-tutor",
+      "display_name": "Educational Tutor",
+      "description": "AI 教育导师 — 将文档转为交互式教学内容，结构化学习路径",
+      "category": "education",
+      "command": "npx",
+      "args": ["-y", "mcp-tutor"],
+      "source": "community",
+      "source_url": "https://github.com/moarshy/mcp-tutor",
+      "downloads": 600,
+      "rating": 4.1,
+      "tags": ["education", "tutor", "learning", "interactive"]
     }
   ],
   "categories": {
@@ -609,6 +678,8 @@
     "cloud": "云服务",
     "finance": "金融支付",
     "media": "媒体内容",
-    "automotive": "汽车出行"
+    "automotive": "汽车出行",
+    "video": "视频制作",
+    "education": "教育学习"
   }
 }

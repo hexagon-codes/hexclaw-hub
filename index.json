@@ -1,6 +1,6 @@
 {
-  "version": "1.4.0",
-  "updated_at": "2026-03-26T14:00:00Z",
+  "version": "1.5.0",
+  "updated_at": "2026-03-26T15:00:00Z",
   "skills": [
     {
       "name": "code-review-pro",
@@ -617,6 +617,79 @@
         "travel",
         "packing",
         "checklist"
+      ],
+      "downloads": 0,
+      "rating": 0
+    },
+    {
+      "name": "video-editor-pro",
+      "display_name": "Video Editor Pro",
+      "description": "AI 视频剪辑助手 — FFmpeg 命令生成、字幕制作、转码方案、剪辑工作流",
+      "version": "1.0.0",
+      "author": "hexclaw",
+      "category": "media",
+      "tags": [
+        "video",
+        "ffmpeg",
+        "edit",
+        "subtitle",
+        "transcode"
+      ],
+      "downloads": 0,
+      "rating": 0
+    },
+    {
+      "name": "homework-tutor-primary",
+      "display_name": "Homework Tutor (Primary)",
+      "description": "小学作业辅导 — 语文阅读写作、数学计算应用题、英语启蒙，引导式教学",
+      "version": "1.0.0",
+      "author": "hexclaw",
+      "category": "education",
+      "tags": [
+        "education",
+        "primary",
+        "homework",
+        "math",
+        "chinese",
+        "english"
+      ],
+      "downloads": 0,
+      "rating": 0
+    },
+    {
+      "name": "homework-tutor-middle",
+      "display_name": "Homework Tutor (Middle School)",
+      "description": "初中作业辅导 — 数学代数几何、物理化学、语文阅读作文、英语语法写作",
+      "version": "1.0.0",
+      "author": "hexclaw",
+      "category": "education",
+      "tags": [
+        "education",
+        "middle-school",
+        "homework",
+        "math",
+        "physics",
+        "chemistry"
+      ],
+      "downloads": 0,
+      "rating": 0
+    },
+    {
+      "name": "homework-tutor-high",
+      "display_name": "Homework Tutor (High School)",
+      "description": "高中作业辅导 — 数学函数导数、物理力学电磁、化学有机无机、面向高考备考",
+      "version": "1.0.0",
+      "author": "hexclaw",
+      "category": "education",
+      "tags": [
+        "education",
+        "high-school",
+        "homework",
+        "gaokao",
+        "math",
+        "physics",
+        "chemistry",
+        "biology"
       ],
       "downloads": 0,
       "rating": 0
