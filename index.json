@@ -1,6 +1,6 @@
 {
-  "version": "1.5.0",
-  "updated_at": "2026-03-26T15:00:00Z",
+  "version": "1.6.0",
+  "updated_at": "2026-06-21T00:00:00Z",
   "skills": [
     {
       "name": "code-review-pro",
@@ -46,6 +46,39 @@
       ],
       "downloads": 15670,
       "rating": 4.6
+    },
+    {
+      "name": "code-refactor",
+      "display_name": "代码重构优化",
+      "description": "在保持行为不变的前提下消除重复、提升可读性与性能，给出分步重构方案",
+      "version": "1.0.0",
+      "author": "hexclaw",
+      "category": "coding",
+      "tags": ["refactor", "clean-code", "quality"],
+      "downloads": 0,
+      "rating": 0
+    },
+    {
+      "name": "security-audit",
+      "display_name": "安全审计",
+      "description": "静态审查代码中的 SQL 注入、XSS、密钥泄露、越权等常见安全漏洞并给出修复建议",
+      "version": "1.0.0",
+      "author": "hexclaw",
+      "category": "coding",
+      "tags": ["security", "audit", "vulnerability"],
+      "downloads": 0,
+      "rating": 0
+    },
+    {
+      "name": "debug-detective",
+      "display_name": "Bug 系统排查",
+      "description": "用科学方法定位根因：复现→缩小范围→假设验证→定位到具体代码行",
+      "version": "1.0.0",
+      "author": "hexclaw",
+      "category": "coding",
+      "tags": ["debug", "troubleshooting", "root-cause"],
+      "downloads": 0,
+      "rating": 0
     },
     {
       "name": "arxiv-reader",
@@ -271,6 +304,39 @@
       ],
       "downloads": 6800,
       "rating": 4.2
+    },
+    {
+      "name": "pptx-generator",
+      "display_name": "PPT 生成",
+      "description": "把要点/大纲一键生成可演示的 PPTX 幻灯片，含版式、配色与讲者备注",
+      "version": "1.0.0",
+      "author": "hexclaw",
+      "category": "productivity",
+      "tags": ["pptx", "slides", "presentation", "office"],
+      "downloads": 0,
+      "rating": 0
+    },
+    {
+      "name": "docx-generator",
+      "display_name": "Word 文档",
+      "description": "生成/编辑带样式、目录与批注修订的 Word(DOCX) 文档",
+      "version": "1.0.0",
+      "author": "hexclaw",
+      "category": "productivity",
+      "tags": ["docx", "word", "document", "office"],
+      "downloads": 0,
+      "rating": 0
+    },
+    {
+      "name": "xlsx-generator",
+      "display_name": "Excel 表格",
+      "description": "生成带公式、数据透视与图表的 Excel(XLSX) 电子表格",
+      "version": "1.0.0",
+      "author": "hexclaw",
+      "category": "productivity",
+      "tags": ["xlsx", "excel", "spreadsheet", "office"],
+      "downloads": 0,
+      "rating": 0
     },
     {
       "name": "legal-cog",
