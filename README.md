@@ -7,11 +7,11 @@ HexClaw Agent 的在线技能目录和 MCP 服务器市场。
 - **技能 (Skills)**：以 Markdown 格式定义，通过 YAML frontmatter 描述元数据，正文作为 LLM 系统指令注入上下文
 - **MCP 服务器**：以 JSON 格式定义，包含安装命令、参数、环境变量等，支持一键安装
 
-当前仓库已收录 **51** 个技能条目 + **54** 个 MCP 服务器，包含三类来源：
+当前仓库已收录 **65** 个技能条目 + **59** 个 MCP 服务器，包含三类来源：
 
 | 来源 | 数量 | 说明 |
 |------|------|------|
-| 原生条目 | 32 | 直接为 HexClaw 技能市场维护的技能 |
+| 原生条目 | 46 | 直接为 HexClaw 技能市场维护的技能 |
 | ClawHub 热门改编 | 12 | 参考 ClawHub 热门榜公开条目，按 HexClaw 场景重写 |
 | OpenClaw / playbooks 改编 | 7 | 参考 OpenClaw Skills / playbooks 公开条目，按 HexClaw 场景重写 |
 
@@ -21,8 +21,8 @@ HexClaw Agent 的在线技能目录和 MCP 服务器市场。
 
 ```text
 hexclaw-hub/
-├── index.json              # 技能目录索引 (51 skills)
-├── mcp-registry.json       # MCP 服务器市场 (54 servers)
+├── index.json              # 技能目录索引 (65 skills)
+├── mcp-registry.json       # MCP 服务器市场 (59 servers)
 ├── THIRD_PARTY_CLAWHUB.md  # ClawHub 热门榜改编条目的来源说明
 ├── skills/                 # 技能文件
 │   ├── code-review-pro.md
@@ -34,7 +34,7 @@ hexclaw-hub/
 
 ## MCP 服务器市场
 
-`mcp-registry.json` 收录了 54 个热门 MCP 服务器，涵盖 20 个分类：
+`mcp-registry.json` 收录了 59 个热门 MCP 服务器，涵盖 21 个分类：
 
 | 分类 | 服务器 |
 |------|--------|
@@ -48,17 +48,18 @@ hexclaw-hub/
 | 数据库 | SQLite, PostgreSQL, MySQL, Redis, MongoDB |
 | 记忆存储 | Memory (Knowledge Graph) |
 | 通讯协作 | Slack, Discord, Telegram, Email |
-| 效率工具 | Notion, Linear, Jira, Obsidian, Google Drive, Hugging Face, Excel |
+| 效率工具 | Notion, Linear, Jira, Obsidian, Google Drive, Hugging Face |
+| 办公文档 | Excel, MarkItDown, Pandoc |
 | 运维部署 | Docker, Kubernetes, Cloudflare, Vercel |
 | 监控告警 | Sentry |
 | 云服务 | AWS |
 | 金融支付 | Stripe, 老虎证券 (Tiger), 富途牛牛 (Futu) |
 | 地图定位 | Google Maps |
 | 媒体内容 | YouTube |
-| 实用工具 | Time |
+| 实用工具 | Time, 天气 (Open-Meteo), 汇率 (Frankfurter) |
 | 汽车出行 | Car Database, Car Price (FIPE), Vehicle Diagnostics |
 | 视频制作 | Video & Audio Editor, FFmpeg Video Processor |
-| 教育学习 | Wolfram Alpha, Math Operations, Educational Tutor |
+| 教育学习 | Wolfram Alpha, Math Operations, Educational Tutor, Anki |
 
 数据来源：[Smithery.ai](https://smithery.ai) 热门排行 + [mcp.so](https://mcp.so) + [Glama.ai](https://glama.ai/mcp/servers) + [MCP 官方参考实现](https://github.com/modelcontextprotocol/servers)。
 
@@ -68,7 +69,7 @@ hexclaw-hub/
 - `index.json` 是客户端拉取的技能目录索引，需和 `skills/*.md` 中的名称、版本、分类保持一致。
 - `THIRD_PARTY_CLAWHUB.md` 记录所有第三方改编条目的来源页面、slug 与作者信息。
 
-HexClaw 引擎默认从本仓库的发布标签（当前 `v0.0.3`）拉取 `index.json`、`mcp-registry.json` 与 `skills/*.md`（见 `hexclaw` 中 `skill/hub` 默认 `repo_url` / `branch`）。
+HexClaw 引擎默认从本仓库的发布标签（当前 `v0.0.4`）拉取 `index.json`、`mcp-registry.json` 与 `skills/*.md`（见 `hexclaw` 中 `skill/hub` 默认 `repo_url` / `branch`）。
 
 ## 技能格式
 
@@ -130,9 +131,9 @@ tags:
 | data | 4 | 数据处理 |
 | automation | 6 | 自动化 |
 | productivity | 16 | 效率工具 |
-| education | 3 | 教育辅导 |
+| education | 13 | 教育辅导 |
 | automotive | 2 | 汽车出行 |
-| media | 1 | 媒体制作 |
+| media | 5 | 媒体制作 |
 
 ## 维护流程
 

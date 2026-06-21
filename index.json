@@ -1,5 +1,5 @@
 {
-  "version": "1.6.0",
+  "version": "1.8.0",
   "updated_at": "2026-06-21T00:00:00Z",
   "skills": [
     {
@@ -757,6 +757,160 @@
         "chemistry",
         "biology"
       ],
+      "downloads": 0,
+      "rating": 0
+    },
+    {
+      "name": "lesson-plan",
+      "display_name": "教案设计",
+      "description": "按学段/学科/课时生成结构化教案 — 教学目标、重难点、教学过程、板书与作业设计",
+      "version": "1.0.0",
+      "author": "hexclaw",
+      "category": "education",
+      "tags": ["lesson-plan", "teaching", "k12", "教案"],
+      "downloads": 0,
+      "rating": 0
+    },
+    {
+      "name": "quiz-generator",
+      "display_name": "组卷出题",
+      "description": "按知识点/难度/题型生成练习题与试卷，附标准答案、解析与评分标准",
+      "version": "1.0.0",
+      "author": "hexclaw",
+      "category": "education",
+      "tags": ["quiz", "exam", "test", "k12", "组卷"],
+      "downloads": 0,
+      "rating": 0
+    },
+    {
+      "name": "essay-grader",
+      "display_name": "作文批改",
+      "description": "中英文作文批改 — 按评分标准打分、逐句点评、给出修改建议与范例升格",
+      "version": "1.0.0",
+      "author": "hexclaw",
+      "category": "education",
+      "tags": ["essay", "writing", "grading", "k12", "作文"],
+      "downloads": 0,
+      "rating": 0
+    },
+    {
+      "name": "mistake-notebook",
+      "display_name": "错题本",
+      "description": "整理错题、定位失分根因、归纳同类题型并自动生成举一反三的变式练习",
+      "version": "1.0.0",
+      "author": "hexclaw",
+      "category": "education",
+      "tags": ["mistakes", "review", "practice", "k12", "错题"],
+      "downloads": 0,
+      "rating": 0
+    },
+    {
+      "name": "concept-explainer",
+      "display_name": "知识点讲解",
+      "description": "把抽象知识点按学段讲清楚 — 类比、图示思路、典型例题与常见误区",
+      "version": "1.0.0",
+      "author": "hexclaw",
+      "category": "education",
+      "tags": ["explain", "concept", "tutoring", "k12", "讲解"],
+      "downloads": 0,
+      "rating": 0
+    },
+    {
+      "name": "classical-chinese",
+      "display_name": "古诗文鉴赏",
+      "description": "文言文/古诗词 翻译、字词注释、主旨赏析、背诵助记与考点梳理",
+      "version": "1.0.0",
+      "author": "hexclaw",
+      "category": "education",
+      "tags": ["classical-chinese", "poetry", "chinese", "k12", "古诗文"],
+      "downloads": 0,
+      "rating": 0
+    },
+    {
+      "name": "english-vocab-coach",
+      "display_name": "英语词汇教练",
+      "description": "英语单词记忆 — 词根词缀拆解、语境例句、联想记忆与拼写/用法辨析（可配 Anki）",
+      "version": "1.0.0",
+      "author": "hexclaw",
+      "category": "education",
+      "tags": ["english", "vocabulary", "language", "k12", "词汇"],
+      "downloads": 0,
+      "rating": 0
+    },
+    {
+      "name": "study-planner",
+      "display_name": "学习计划",
+      "description": "按目标/考试节点/可用时间制定可执行的学习与复习计划，含每日清单与复盘",
+      "version": "1.0.0",
+      "author": "hexclaw",
+      "category": "education",
+      "tags": ["study-plan", "schedule", "review", "k12", "学习计划"],
+      "downloads": 0,
+      "rating": 0
+    },
+    {
+      "name": "reading-comprehension",
+      "display_name": "阅读理解精讲",
+      "description": "现代文/英语阅读理解 — 文章解构、题型套路、答题模板与逐题讲解",
+      "version": "1.0.0",
+      "author": "hexclaw",
+      "category": "education",
+      "tags": ["reading", "comprehension", "k12", "阅读理解"],
+      "downloads": 0,
+      "rating": 0
+    },
+    {
+      "name": "oral-english-partner",
+      "display_name": "英语口语陪练",
+      "description": "情景对话陪练 — 分级引导、实时纠音纠错、地道表达替换与跟读练习",
+      "version": "1.0.0",
+      "author": "hexclaw",
+      "category": "education",
+      "tags": ["english", "speaking", "oral", "k12", "口语"],
+      "downloads": 0,
+      "rating": 0
+    },
+    {
+      "name": "ai-comic-drama",
+      "display_name": "AI 漫剧创作",
+      "description": "漫剧（条漫/有声漫剧）一体化创作 — 故事大纲、分镜脚本、人物设定与配音旁白脚本",
+      "version": "1.0.0",
+      "author": "hexclaw",
+      "category": "media",
+      "tags": ["comic", "manhua", "storyboard", "ai", "漫剧"],
+      "downloads": 0,
+      "rating": 0
+    },
+    {
+      "name": "comic-art-prompt",
+      "display_name": "漫画 AI 绘图提示词",
+      "description": "为漫剧/插画分镜生成 AI 绘图提示词 — 画风、构图、镜头、角色一致性与负面提示",
+      "version": "1.0.0",
+      "author": "hexclaw",
+      "category": "media",
+      "tags": ["prompt", "image", "comic", "ai-art", "绘图"],
+      "downloads": 0,
+      "rating": 0
+    },
+    {
+      "name": "ai-short-drama",
+      "display_name": "AI 短剧编剧",
+      "description": "竖屏短剧剧本 — 高能开篇、反转节奏、人物钩子、分集大纲与逐场台词",
+      "version": "1.0.0",
+      "author": "hexclaw",
+      "category": "media",
+      "tags": ["short-drama", "script", "screenwriting", "ai", "短剧"],
+      "downloads": 0,
+      "rating": 0
+    },
+    {
+      "name": "short-drama-production",
+      "display_name": "AI 短剧制作流程",
+      "description": "把短剧本变成成片的 AI 工作流 — 分镜、运镜、AI 文生/图生视频提示词、配音配乐与剪辑清单",
+      "version": "1.0.0",
+      "author": "hexclaw",
+      "category": "media",
+      "tags": ["short-drama", "production", "video", "ai", "workflow", "制作"],
       "downloads": 0,
       "rating": 0
     }
