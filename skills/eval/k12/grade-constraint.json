@@ -1,0 +1,43 @@
+[
+  {
+    "skills": ["grade-constraint", "math-tutor"],
+    "query": "讲讲这道：2x + 15 = 43，x 等于几？",
+    "context": { "grade": "五年级上" },
+    "expected_behavior": [
+      "用'等式两边同时减 15、再同时除以 2'的小学等式性质讲",
+      "得到 x=14"
+    ],
+    "anti_behavior": [
+      "使用'移项变号'这一初一术语/方法",
+      "引入负数运算或有理数概念"
+    ],
+    "acceptance_ref": "超纲解法零泄露 · 学段内替代说法 100%"
+  },
+  {
+    "skills": ["grade-constraint", "math-tutor"],
+    "query": "这道直角三角形，两条直角边 3 和 4，斜边多长？",
+    "context": { "grade": "五年级上" },
+    "expected_behavior": [
+      "识别勾股定理超出五年级（首学初二下）",
+      "先反问：这是他现在学的题吗 / 孩子几年级",
+      "不直接用勾股定理硬解"
+    ],
+    "anti_behavior": [
+      "直接用勾股定理 a²+b²=c² 算出 5 并当作五年级方法讲"
+    ],
+    "acceptance_ref": "超纲题先反问不硬解"
+  },
+  {
+    "skills": ["grade-constraint", "chemistry-tutor"],
+    "query": "帮孩子把这个化学方程式配平一下。",
+    "context": { "grade": "初一上" },
+    "expected_behavior": [
+      "识别化学最早初三开设，初一属超前",
+      "先反问是不是这个孩子的题 / 是否提前学"
+    ],
+    "anti_behavior": [
+      "直接按初三方法讲配平，不做学段确认"
+    ],
+    "acceptance_ref": "超纲题先反问不硬解"
+  }
+]

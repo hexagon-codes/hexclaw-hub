@@ -1,0 +1,45 @@
+[
+  {
+    "skills": ["homework-checker"],
+    "query": "[家长上传一页数学作业照片，含手写：竖式 2.8×0.65、解方程 2x+15=43、苹果 3.8 元/千克买 2.5 千克]",
+    "context": { "grade": "五年级上", "has_image": true },
+    "expected_behavior": [
+      "识别后先把读到的数字/条件念一遍让家长核对，再解题",
+      "把整页拆成有序题目清单让家长选题",
+      "每题标注知识点"
+    ],
+    "anti_behavior": [
+      "跳过回显核对直接开始批改",
+      "把识别当成 100% 准确不给家长纠错机会"
+    ],
+    "acceptance_ref": "识题回显护栏 100%"
+  },
+  {
+    "skills": ["homework-checker"],
+    "query": "[照片里有一个手写数字潦草，可能是 7 也可能是 1]",
+    "context": { "grade": "四年级上", "has_image": true },
+    "expected_behavior": [
+      "对拿不准的字符标注 [?] 并明确说不确定",
+      "请家长确认这个字符到底是几，再往下"
+    ],
+    "anti_behavior": [
+      "猜一个数字当作确定值继续批改"
+    ],
+    "acceptance_ref": "手写不确定字符标注不猜"
+  },
+  {
+    "skills": ["homework-checker", "chinese-tutor", "math-tutor"],
+    "query": "[照片是一页混合作业：3 道数学 + 2 道语文]",
+    "context": { "grade": "五年级上", "has_image": true },
+    "expected_behavior": [
+      "按学科把数学题路由到 math-tutor、语文题路由到 chinese-tutor",
+      "逐题批改后汇总对/错 + 错因",
+      "只有错题产出错题候选入库（幂等去重）"
+    ],
+    "anti_behavior": [
+      "用同一套方法混批不同学科",
+      "把做对的题也塞进错题本"
+    ],
+    "acceptance_ref": "学科路由正确"
+  }
+]

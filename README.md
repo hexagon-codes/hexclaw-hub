@@ -7,11 +7,11 @@ HexClaw Agent 的在线技能目录和 MCP 服务器市场。
 - **技能 (Skills)**：以 Markdown 格式定义，通过 YAML frontmatter 描述元数据，正文作为 LLM 系统指令注入上下文
 - **MCP 服务器**：以 JSON 格式定义，包含安装命令、参数、环境变量等，支持一键安装
 
-当前仓库已收录 **65** 个技能条目 + **59** 个 MCP 服务器，包含三类来源：
+当前仓库已收录 **73** 个技能条目 + **59** 个 MCP 服务器，包含三类来源：
 
 | 来源 | 数量 | 说明 |
 |------|------|------|
-| 原生条目 | 46 | 直接为 HexClaw 技能市场维护的技能 |
+| 原生条目 | 54 | 直接为 HexClaw 技能市场维护的技能 |
 | ClawHub 热门改编 | 12 | 参考 ClawHub 热门榜公开条目，按 HexClaw 场景重写 |
 | OpenClaw / playbooks 改编 | 7 | 参考 OpenClaw Skills / playbooks 公开条目，按 HexClaw 场景重写 |
 
@@ -21,7 +21,7 @@ HexClaw Agent 的在线技能目录和 MCP 服务器市场。
 
 ```text
 hexclaw-hub/
-├── index.json              # 技能目录索引 (65 skills)
+├── index.json              # 技能目录索引 (73 skills)
 ├── mcp-registry.json       # MCP 服务器市场 (59 servers)
 ├── THIRD_PARTY_CLAWHUB.md  # ClawHub 热门榜改编条目的来源说明
 ├── skills/                 # 技能文件
@@ -69,7 +69,7 @@ hexclaw-hub/
 - `index.json` 是客户端拉取的技能目录索引，需和 `skills/*.md` 中的名称、版本、分类保持一致。
 - `THIRD_PARTY_CLAWHUB.md` 记录所有第三方改编条目的来源页面、slug 与作者信息。
 
-HexClaw 引擎默认从本仓库的发布标签（当前 `v0.0.4`）拉取 `index.json`、`mcp-registry.json` 与 `skills/*.md`（见 `hexclaw` 中 `skill/hub` 默认 `repo_url` / `branch`）。
+HexClaw 引擎默认从本仓库的发布标签（当前 `v0.0.6`）拉取 `index.json`、`mcp-registry.json` 与 `skills/*.md`（见 `hexclaw` 中 `skill/hub` 默认 `repo_url` / `branch`）。
 
 ## 技能格式
 
@@ -131,7 +131,7 @@ tags:
 | data | 4 | 数据处理 |
 | automation | 6 | 自动化 |
 | productivity | 16 | 效率工具 |
-| education | 13 | 教育辅导 |
+| education | 21 | 教育辅导 |
 | automotive | 2 | 汽车出行 |
 | media | 5 | 媒体制作 |
 
@@ -140,6 +140,6 @@ tags:
 新增或更新技能时，按下面顺序维护：
 
 1. 在 `skills/` 下新增或修改对应的 `.md` 文件，保证 frontmatter 完整。
-2. 同步更新 `index.json` 中的元数据、`version` 和 `updated_at`。
+2. 运行 `python3 scripts/generate-index.py`，由 frontmatter 重新生成 `index.json`。
 3. 如果是第三方改编技能，在 [`THIRD_PARTY_CLAWHUB.md`](./THIRD_PARTY_CLAWHUB.md) 中补来源信息。
 4. 提交前检查技能文件名、frontmatter `name`、`index.json` `name` 三者完全一致。
