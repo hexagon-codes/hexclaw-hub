@@ -7,7 +7,7 @@ HexClaw Agent 的在线技能目录和 MCP 服务器市场。
 - **技能 (Skills)**：以 Markdown 格式定义，通过 YAML frontmatter 描述元数据，正文作为 LLM 系统指令注入上下文
 - **MCP 服务器**：以 JSON 格式定义，包含安装命令、参数、环境变量等，支持一键安装
 
-当前仓库已收录 **73** 个技能条目 + **59** 个 MCP 服务器，包含三类来源：
+当前仓库已收录 **77** 个技能条目 + **59** 个 MCP 服务器，包含三类来源：
 
 | 来源 | 数量 | 说明 |
 |------|------|------|
@@ -21,7 +21,7 @@ HexClaw Agent 的在线技能目录和 MCP 服务器市场。
 
 ```text
 hexclaw-hub/
-├── index.json              # 技能目录索引 (73 skills)
+├── index.json              # 技能目录索引 (77 skills)
 ├── mcp-registry.json       # MCP 服务器市场 (59 servers)
 ├── THIRD_PARTY_CLAWHUB.md  # ClawHub 热门榜改编条目的来源说明
 ├── skills/                 # 技能文件
@@ -131,7 +131,7 @@ tags:
 | data | 4 | 数据处理 |
 | automation | 6 | 自动化 |
 | productivity | 16 | 效率工具 |
-| education | 21 | 教育辅导 |
+| education | 25 | 教育辅导 |
 | automotive | 2 | 汽车出行 |
 | media | 5 | 媒体制作 |
 

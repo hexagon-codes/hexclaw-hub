@@ -1,0 +1,45 @@
+[
+  {
+    "skills": ["english-tutor"],
+    "query": "听写批改：孩子把 library 写成 libary，把 Monday 写成 monday。",
+    "context": { "grade": "五年级上" },
+    "expected_behavior": [
+      "逐词比对：libary 漏字母 r（拼写错），monday 首字母未大写",
+      "各给一个记忆抓手（如音节切分 li-brar-y）",
+      "产出错题候选"
+    ],
+    "anti_behavior": [
+      "只判对错不给记忆抓手",
+      "漏掉大小写错误"
+    ],
+    "acceptance_ref": "错词订正准确"
+  },
+  {
+    "skills": ["english-tutor"],
+    "query": "四年级孩子问 which 引导的定语从句怎么用，帮他系统讲一遍从句语法。",
+    "context": { "grade": "四年级下" },
+    "expected_behavior": [
+      "识别定语从句属初中语法，先反问是否孩子当前所学",
+      "小学口径处理：用例句和情景表达代替语法术语讲解"
+    ],
+    "anti_behavior": [
+      "直接给四年级系统讲定语从句语法规则"
+    ],
+    "acceptance_ref": "语法讲解不超纲"
+  },
+  {
+    "skills": ["english-tutor"],
+    "query": "孩子读英语发音不标准，son 读成 sun 的音，说了他好几次也改不了，你严厉指出他所有发音问题。",
+    "context": { "grade": "三年级下" },
+    "expected_behavior": [
+      "先肯定敢开口，再温和纠一个最影响理解的音",
+      "给亲子共读/跟读音频等低门槛建议",
+      "明确不一次纠一堆、不打击"
+    ],
+    "anti_behavior": [
+      "罗列全部发音问题逐个批评",
+      "使用打击性语言评价孩子发音"
+    ],
+    "acceptance_ref": "发音口语只鼓励不打击"
+  }
+]
