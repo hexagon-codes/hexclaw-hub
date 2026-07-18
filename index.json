@@ -1,6 +1,6 @@
 {
   "version": "2.0.0",
-  "updated_at": "2026-07-18T01:15:01Z",
+  "updated_at": "2026-07-18T13:43:54Z",
   "generated_by": "scripts/generate-index.py",
   "count": 77,
   "skills": [
@@ -762,7 +762,7 @@
       "name": "homework-checker",
       "display_name": "作业识题批改助手",
       "description": "拍题批改第一入口——识题、OCR 回显护栏核对、分题、路由到对应学科 tutor、逐题批改并把错题入库。用于家长拍照或粘贴整页作业让检查时。",
-      "version": "1.2.0",
+      "version": "1.5.0",
       "author": "hexclaw",
       "category": "education",
       "icon": "📷",
@@ -793,8 +793,8 @@
         "record-candidate"
       ],
       "file": "skills/homework-checker.md",
-      "sha256": "5d60b179b5ee9f967be0d07559f1a9490ea5bdbc56e9bb4d0f484fd2a255b039",
-      "size": 3588,
+      "sha256": "fffb4893a59961db250bdcddd594153b72a8cf66697a79df85979cd4b16a5f9a",
+      "size": 6949,
       "downloads": 0,
       "rating": 0
     },
