@@ -9,9 +9,13 @@
 退出码：0 全绿；1 有契约违例（打印每条 FAIL）。
 也可在 pytest 下运行：  pytest scripts/validate-mcp-registry.py
 """
+import base64
+import binascii
 import json
 import os
+import re
 import sys
+from pathlib import Path
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REGISTRY = os.path.join(ROOT, "mcp-registry.json")
@@ -22,6 +26,10 @@ ALLOWED_COMMANDS = {"npx", "node", "uvx", "uv", "python", "python3", "docker", "
 DANGEROUS_ARG_CHARS = set("`$|;&><(){}!\\'\"\n\r\x00")
 # command 危险字符（后端 mcpDangerousChars：含 `~`）。
 DANGEROUS_CMD_CHARS = DANGEROUS_ARG_CHARS | {"~"}
+EXACT_VERSION = re.compile(r"^(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:[-+][0-9A-Za-z.-]+)?$")
+EXACT_PYPI_VERSION = re.compile(r"^[0-9][0-9A-Za-z.!+_-]*$")
+IMMUTABLE_ACTION = re.compile(r"^[^\s#]+@[0-9a-f]{40}(?:\s*#.*)?$")
+MUTABLE_RUNNER = re.compile(r"\b(?:ubuntu|macos|windows)-latest\b")
 
 
 def load():
@@ -40,6 +48,25 @@ def test_structure():
     reg = load()
     assert isinstance(reg, dict) and reg.get("version"), "缺少顶层 version"
     assert isinstance(reg.get("servers"), list) and reg["servers"], "servers 必须为非空数组"
+
+
+def test_github_actions_use_immutable_dependencies():
+    workflows = sorted((Path(ROOT) / ".github" / "workflows").glob("*.y*ml"))
+    assert workflows, "缺少 GitHub Actions workflow"
+    for workflow in workflows:
+        for number, raw_line in enumerate(workflow.read_text(encoding="utf-8").splitlines(), 1):
+            line = raw_line.strip()
+            if not line or line.startswith("#"):
+                continue
+            if line.startswith("uses:") or line.startswith("- uses:"):
+                action_line = line[2:] if line.startswith("- ") else line
+                ref = action_line[len("uses:"):].strip()
+                if not ref.startswith("./"):
+                    assert IMMUTABLE_ACTION.fullmatch(ref), f"{workflow}:{number}: mutable action {ref!r}"
+            assert not MUTABLE_RUNNER.search(line), f"{workflow}:{number}: mutable runner {line!r}"
+            assert not ("go install " in line and "@latest" in line), (
+                f"{workflow}:{number}: mutable Go tool {line!r}"
+            )
 
 
 def test_every_server_valid_shape():
@@ -62,6 +89,52 @@ def test_every_server_valid_shape():
         env = s.get("env")
         if env is not None:
             assert isinstance(env, dict), f"{name}: env 必须为对象"
+
+
+def test_every_executable_dependency_is_exactly_pinned():
+    """一键安装的远程代码必须同时声明精确版本和内容完整性。"""
+    reg = load()
+    for s in reg["servers"]:
+        name = s["name"]
+        status = s.get("status")
+        assert status in {"pinned", "quarantined"}, f"{name}: status 必须为 pinned/quarantined"
+        if status == "quarantined":
+            assert s.get("quarantine_reason"), f"{name}: quarantined 条目必须说明原因"
+            assert not s.get("artifact"), f"{name}: quarantined 条目不得伪装成已验证 artifact"
+            continue
+        artifact = s.get("artifact")
+        assert isinstance(artifact, dict), f"{name}: 缺少 artifact 供应链元数据"
+        ecosystem = artifact.get("ecosystem")
+        assert ecosystem in {"npm", "pypi"}, f"{name}: artifact.ecosystem 非法: {ecosystem!r}"
+        package = artifact.get("package", "")
+        version = artifact.get("version", "")
+        integrity = artifact.get("integrity", "")
+        assert package and not any(c.isspace() for c in package), f"{name}: artifact.package 非法"
+        if ecosystem == "npm":
+            assert EXACT_VERSION.fullmatch(version), f"{name}: npm artifact.version 必须是精确 SemVer，实际 {version!r}"
+            assert artifact.get("source_registry") == "https://registry.npmjs.org", (
+                f"{name}: npm source_registry 必须固定为官方 registry"
+            )
+            try:
+                decoded = base64.b64decode(integrity[len("sha512-"):] if integrity.startswith("sha512-") else "", validate=True)
+            except (binascii.Error, ValueError):
+                decoded = b""
+            assert integrity.startswith("sha512-") and len(decoded) == 64, (
+                f"{name}: npm artifact.integrity 必须是 registry sha512 SRI"
+            )
+            assert f"{package}@{version}" in s.get("args", []), f"{name}: argv 未绑定精确 npm artifact"
+        else:
+            assert EXACT_PYPI_VERSION.fullmatch(version), (
+                f"{name}: PyPI artifact.version 必须是无范围/通配符的精确 PEP 440 版本，实际 {version!r}"
+            )
+            assert artifact.get("source_registry") == "https://pypi.org", (
+                f"{name}: PyPI source_registry 必须固定为官方 registry"
+            )
+            digest = integrity[len("sha256:"):] if integrity.startswith("sha256:") else ""
+            assert integrity.startswith("sha256:") and len(digest) == 64 and all(c in "0123456789abcdef" for c in digest), (
+                f"{name}: PyPI artifact.integrity 必须是 sha256:<64 hex>"
+            )
+            assert f"{package}=={version}" in s.get("args", []), f"{name}: argv 未绑定精确 PyPI artifact"
 
 
 def test_no_dead_sqlite_npm_package():
@@ -101,7 +174,9 @@ def test_sqlite_uses_uvx():
     s = server(load(), "sqlite")
     assert s.get("command") == "uvx", "sqlite 官方为 PyPI 包，命令应为 uvx"
     args = s.get("args", [])
-    assert "mcp-server-sqlite" in args and "--db-path" in args, "sqlite 应为 uvx mcp-server-sqlite --db-path <path>"
+    assert any(a.startswith("mcp-server-sqlite==") for a in args) and "--db-path" in args, (
+        "sqlite 应为 uvx mcp-server-sqlite==<exact-version> --db-path <path>"
+    )
 
 
 def test_postgres_url_is_arg():
