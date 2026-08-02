@@ -34,7 +34,7 @@ hexclaw-hub/
 
 ## MCP 服务器市场
 
-`mcp-registry.json` 收录了 59 个热门 MCP 服务器，涵盖 21 个分类：
+`mcp-registry.json` 收录了 59 个 MCP 服务器，涵盖 21 个分类。所有可执行条目必须固定精确包版本和官方 registry 完整性；当前 49 个为 `pinned`，10 个上游包已不存在并标为 `quarantined`，隔离条目不得进入安装/执行链。
 
 | 分类 | 服务器 |
 |------|--------|
@@ -69,7 +69,15 @@ hexclaw-hub/
 - `index.json` 是客户端拉取的技能目录索引，需和 `skills/*.md` 中的名称、版本、分类保持一致。
 - `THIRD_PARTY_CLAWHUB.md` 记录所有第三方改编条目的来源页面、slug 与作者信息。
 
-HexClaw 引擎默认从本仓库的发布标签（当前 `v0.0.6`）拉取 `index.json`、`mcp-registry.json` 与 `skills/*.md`（见 `hexclaw` 中 `skill/hub` 默认 `repo_url` / `branch`）。
+HexClaw 引擎只应从发布 BOM 固定的不可变 tag/commit 拉取 `index.json`、`mcp-registry.json` 与 `skills/*.md`；禁止使用浮动 `main` 或在 README 中另行维护运行时版本。最近已发布标签为 `v0.0.8`，当前工作树内容需在新 tag 发布并同步 BOM 后才可成为远程默认源。
+
+### MCP 供应链约束
+
+- `status=pinned` 才允许安装；`status=quarantined` 必须带 `quarantine_reason`，运行时 fail-closed。
+- npm 参数必须绑定 `package@exact-version`，并记录官方 registry 返回的 SHA-512 SRI。
+- PyPI 参数必须绑定 `package==exact-version`，并记录官方 release SHA-256。
+- `artifact` 只证明包身份和内容完整性，不代表代码已经安全审计；运行时仍必须使用最小环境、文件 capability 和受控网络出口。
+- 修改 registry 后必须运行 `python3 scripts/validate-mcp-registry.py`，并同步 HexClaw 的 embedded registry；普通测试不得自动更新 lock 或 golden。
 
 ## 技能格式
 
