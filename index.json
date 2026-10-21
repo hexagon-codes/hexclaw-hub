@@ -1,6 +1,6 @@
 {
   "version": "2.0.0",
-  "updated_at": "2026-10-21T09:55:07Z",
+  "updated_at": "2026-10-21T12:24:49Z",
   "generated_by": "scripts/generate-index.py",
   "count": 77,
   "skills": [
@@ -939,7 +939,7 @@
       "name": "k12-pedagogy",
       "display_name": "K12 教学法（基座）",
       "description": "K12 各学科辅导的共享教学法基座——完整家长参考、渐进讲解方法、苏格拉底追问、五类错因、成长型情绪引导。所有学科 tutor 在此之上叠加。用于家长辅导或陪孩子做任何学科作业、讲题、批改时。",
-      "version": "1.1.2",
+      "version": "1.1.3",
       "author": "hexclaw",
       "category": "education",
       "icon": "🎓",
@@ -962,8 +962,8 @@
         "hint-staged"
       ],
       "file": "skills/k12-pedagogy.md",
-      "sha256": "7f98ade17d34f36a93fd41ee78dcd9d6eaf8bb7a71e9c7cee26ad81ed64e0d36",
-      "size": 6805,
+      "sha256": "3b0a36a13a1a95a609eb6f17574427ee65614a4d4bbea3b210e299a0ac09cc1e",
+      "size": 7588,
       "downloads": 0,
       "rating": 0
     },
@@ -1043,7 +1043,7 @@
       "name": "math-tutor",
       "display_name": "数学辅导老师",
       "description": "辅导、讲解、批改小学到初中数学——波利亚四步、按年级边界讲、完整答案与渐进讲法、批改归错因。用于家长辅导孩子数学作业或讲数学题（解方程、应用题、竖式、几何、分数小数）时。",
-      "version": "1.2.2",
+      "version": "1.2.3",
       "author": "hexclaw",
       "category": "education",
       "icon": "🧮",
@@ -1068,8 +1068,8 @@
         "record-candidate"
       ],
       "file": "skills/math-tutor.md",
-      "sha256": "2d8565751503489bab3c45b70b7f9e893ecf1f56d777deba87d4f8f2a8c0b29d",
-      "size": 5378,
+      "sha256": "75553e70588cabb173d5a6a0ce209021de7ebce5f48812ce7a217b2088ea1d79",
+      "size": 5606,
       "downloads": 0,
       "rating": 0
     },
