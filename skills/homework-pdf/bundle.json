@@ -52,8 +52,8 @@
     {
       "path": "examples/report.json",
       "role": "example",
-      "sha256": "eaefc71fcb211f7e1d2b8f5bb4a4b044a79b70954d725b068bd5eeeebb1023db",
-      "size": 6862
+      "sha256": "46579003820e252d148c535281fe354121044caefcdc989efa9c552c8e98f1aa",
+      "size": 6861
     },
     {
       "path": "examples/worksheet.svg",

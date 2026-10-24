@@ -7,11 +7,11 @@ HexClaw Agent 的在线技能目录和 MCP 服务器市场。
 - **技能 (Skills)**：以 Markdown 格式定义，通过 YAML frontmatter 描述元数据，正文作为 LLM 系统指令注入上下文
 - **MCP 服务器**：以 JSON 格式定义，包含安装命令、参数、环境变量等，支持一键安装
 
-当前仓库已收录 **77** 个技能条目 + **59** 个 MCP 服务器，包含三类来源：
+当前仓库已收录 **78** 个技能条目 + **59** 个 MCP 服务器，按已登记的改编来源分为三组：
 
 | 来源 | 数量 | 说明 |
 |------|------|------|
-| 原生条目 | 54 | 直接为 HexClaw 技能市场维护的技能 |
+| 其他市场维护条目 | 59 | 除下列两组改编外的技能定义与资源包 |
 | ClawHub 热门改编 | 12 | 参考 ClawHub 热门榜公开条目，按 HexClaw 场景重写 |
 | OpenClaw / playbooks 改编 | 7 | 参考 OpenClaw Skills / playbooks 公开条目，按 HexClaw 场景重写 |
 
@@ -21,13 +21,17 @@ HexClaw Agent 的在线技能目录和 MCP 服务器市场。
 
 ```text
 hexclaw-hub/
-├── index.json              # 技能目录索引 (77 skills)
+├── index.json              # 技能目录索引 (78 skills)
 ├── mcp-registry.json       # MCP 服务器市场 (59 servers)
 ├── THIRD_PARTY_CLAWHUB.md  # ClawHub 热门榜改编条目的来源说明
 ├── skills/                 # 技能文件
 │   ├── code-review-pro.md
 │   ├── openclaw-agent-browser.md
 │   ├── tavily-search-pro.md
+│   ├── homework-pdf/        # 含模板、Schema 和示例的目录包
+│   │   ├── SKILL.md
+│   │   ├── bundle.json
+│   │   └── assets/
 │   └── ...
 └── README.md
 ```
@@ -66,10 +70,11 @@ hexclaw-hub/
 ## 仓库约定
 
 - `skills/*.md` 是单个技能的定义文件，frontmatter 用于市场元数据，正文用于运行时系统提示词。
-- `index.json` 是客户端拉取的技能目录索引，需和 `skills/*.md` 中的名称、版本、分类保持一致。
+- `skills/<name>/SKILL.md` 是目录包的技能定义，同目录的 `bundle.json` 固定模板、Schema、示例等资源的路径、大小和摘要。
+- `index.json` 是客户端拉取的技能目录索引，需和单文件或目录包定义中的名称、版本、分类保持一致。目录包同时提供 `bundle_sha256`，按资源清单的确定性 JSON 计算。
 - `THIRD_PARTY_CLAWHUB.md` 记录所有第三方改编条目的来源页面、slug 与作者信息。
 
-HexClaw 引擎只应从发布 BOM 固定的不可变 tag/commit 拉取 `index.json`、`mcp-registry.json` 与 `skills/*.md`；禁止使用浮动 `main` 或在 README 中另行维护运行时版本。最近已发布标签为 `v0.0.8`，当前工作树内容需在新 tag 发布并同步 BOM 后才可成为远程默认源。
+HexClaw 引擎只应从发布 BOM 固定的不可变 tag/commit 拉取索引、技能定义及目录包资源，禁止使用浮动 `main`。可用标签以仓库 Tags 为准，运行时版本以应用发布 BOM 为准；工作树内容需在新 tag 发布并同步 BOM 后才可成为远程默认源。目录包需要宿主支持完整资源安装与加载，Hub 发版本身不代表应用已启用新版教学报告。
 
 ### MCP 供应链约束
 
@@ -121,6 +126,7 @@ tags:
 建议保持以下一致性：
 
 - `name` 必须与技能文件名和 frontmatter 中的 `name` 一致。
+- 目录包的 `name` 与目录名、`bundle.json` 的 `skill_id` 一致；`file` 指向 `skills/<name>/SKILL.md`。索引中的 `sha256/size` 对应该定义文件，`bundle_sha256` 对应整个包清单的语义摘要。
 - `version` 更新时，同时同步技能文件 frontmatter。
 - `category` 只能使用仓库定义的标准分类。
 - `description` 应与技能正文能力范围一致，避免市场描述和实际提示词脱节。
@@ -139,7 +145,7 @@ tags:
 | data | 4 | 数据处理 |
 | automation | 6 | 自动化 |
 | productivity | 16 | 效率工具 |
-| education | 25 | 教育辅导 |
+| education | 26 | 教育辅导 |
 | automotive | 2 | 汽车出行 |
 | media | 5 | 媒体制作 |
 
@@ -147,7 +153,8 @@ tags:
 
 新增或更新技能时，按下面顺序维护：
 
-1. 在 `skills/` 下新增或修改对应的 `.md` 文件，保证 frontmatter 完整。
-2. 运行 `python3 scripts/generate-index.py`，由 frontmatter 重新生成 `index.json`。
-3. 如果是第三方改编技能，在 [`THIRD_PARTY_CLAWHUB.md`](./THIRD_PARTY_CLAWHUB.md) 中补来源信息。
-4. 提交前检查技能文件名、frontmatter `name`、`index.json` `name` 三者完全一致。
+1. 新增或修改 `skills/<name>.md`，或 `skills/<name>/SKILL.md` 目录包，保证 frontmatter 完整。
+2. 目录包资源修改后，同步 `bundle.json` 中的大小和 SHA-256。清单不包含自身，身份与版本须和 `SKILL.md` 一致；包摘要遵循包内合同。
+3. 运行 `python3 scripts/generate-index.py`，由 frontmatter 重新生成 `index.json`。生成器核对目录包资源后输出 `bundle_sha256`，资源不匹配时停止生成。
+4. 如果是第三方改编技能，在 [`THIRD_PARTY_CLAWHUB.md`](./THIRD_PARTY_CLAWHUB.md) 中补来源信息。
+5. 提交前检查文件名或目录名、frontmatter `name`、`index.json` `name`，以及目录包身份完全一致。

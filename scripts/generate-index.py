@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-从 skills/*.md 的 YAML frontmatter 生成 index.json —— 单一真相源（堵住 frontmatter 与 index 双维护漂移）。
+从单文件技能和目录包的 YAML frontmatter 生成 index.json。
 
 改进点（对应架构评审 P1-5）：
 - index 由 frontmatter 生成，不手维护；
@@ -65,6 +65,34 @@ def parse_frontmatter(text):
     return meta
 
 
+def bundle_digest(directory, meta):
+    """核对目录包实际资源，按宿主 BundleManifest 合同计算语义摘要。"""
+    with open(os.path.join(directory, "bundle.json"), encoding="utf-8") as fp:
+        manifest = json.load(fp)
+    if (manifest.get("bundle_contract_version") != 1
+            or manifest.get("skill_id") != meta["name"]
+            or manifest.get("version") != meta.get("version")):
+        raise ValueError(f"Skill bundle identity mismatch: {meta['name']}")
+    files = manifest.get("files", [])
+    if not files or not any(entry["path"] == "SKILL.md" for entry in files):
+        raise ValueError(f"Skill bundle is missing SKILL.md: {meta['name']}")
+    resources = []
+    for entry in files:
+        with open(os.path.join(directory, entry["path"]), "rb") as fp:
+            data = fp.read()
+        if len(data) != entry["size"] or hashlib.sha256(data).hexdigest() != entry["sha256"]:
+            raise ValueError(f"Skill bundle resource mismatch: {meta['name']}/{entry['path']}")
+        resources.append({field: entry[field] for field in ("path", "role", "size", "sha256")})
+    identity = {
+        "bundle_contract_version": manifest["bundle_contract_version"],
+        "skill_id": manifest["skill_id"],
+        "version": manifest["version"],
+        "files": resources,
+    }
+    canonical = json.dumps(identity, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+
+
 def main():
     # 非破坏性：以旧 index 条目为基底（保留 display_name/category/downloads/rating 等历史手维护字段），
     # 再用 frontmatter 覆盖它声明的字段，最后加完整性字段。避免"整表重生成降级现有条目"。
@@ -80,9 +108,12 @@ def main():
     entries = []
     errors = []
     for fn in sorted(os.listdir(SKILLS_DIR)):
-        if not fn.endswith(".md"):
+        source = os.path.join(SKILLS_DIR, fn)
+        is_bundle = os.path.isdir(source)
+        relative = f"{fn}/SKILL.md" if is_bundle else fn
+        path = os.path.join(SKILLS_DIR, relative)
+        if not os.path.isfile(path) or not relative.endswith(".md"):
             continue
-        path = os.path.join(SKILLS_DIR, fn)
         content = open(path, "rb").read()
         meta = parse_frontmatter(content.decode("utf-8"))
         if not meta or not meta.get("name"):
@@ -95,9 +126,11 @@ def main():
         for f in LIST_FIELDS:
             if meta.get(f):
                 base[f] = meta[f]
-        base["file"] = f"skills/{fn}"
+        base["file"] = f"skills/{relative}"
         base["sha256"] = hashlib.sha256(content).hexdigest()
         base["size"] = len(content)
+        if is_bundle:
+            base["bundle_sha256"] = bundle_digest(source, meta)
         base.setdefault("downloads", 0)  # 新条目诚实为 0，不编造
         base.setdefault("rating", 0)
         entries.append(base)
