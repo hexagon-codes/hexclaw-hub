@@ -1,4 +1,4 @@
-# 作业报告渲染合同 v1
+# 作业报告渲染合同 v2
 
 本合同是宿主报告投影到模板的展示协议，不代替领域报告或学生评价合同。模板只读取确定的内容，字段空值不触发补写。
 
@@ -13,11 +13,12 @@
 ## 输入结构
 
 ```text
-schema_version: homework-report-render-v1
-document: title, agent_name, grade_term, subject, date, example_label?
+schema_version: homework-report-render-v2
+document: title, agent_name, grade_term, subject, date, source_kind, example_label?
 branding: logo_path?, name, tagline, website_url, website_label,
           wechat_id, github_url, github_label
 source_images: [{path, alt}]
+source_text: Block[]
 questions: [{id, number, title, status: {label, tone}, answer: Inline[],
              calculations: Inline[][], calculation_columns?: 1|2,
              original_answer: [{label?, content: Inline[]}]}]
@@ -46,6 +47,12 @@ deep: {method?: {name, application}, steps: [{number, title, blocks: Block[]}]}
 图文并列按当前可用宽度、17 pt 栏间距及各列权重实际测量。任一列高度超过 A4 正文的 252 mm（297−22−23 mm）时，将各列按原顺序转成可分页正文；不缩字、不裁切、不按字符数猜测。短图文保留并列，页内剩余高度不足时沿正常分页移页。
 
 各讲解组的方法分别放在对应 step 的 `method_note` 块，不汇总成与该组无关的全局方法。单一 `deep.method` 保持兼容；宿主不同时重复传入同一条全局和分组方法注释。
+
+## 来源与兼容
+
+- `document.source_kind` 是 `grading/text_solve`，由宿主真实来源确定，不由教学模型选择。图片保持定版整图及批改标签；纯文字在标题后用普通正文保留完整原题，采用解题状态与生成日期。
+- 未提供作答时由宿主明确投影“未提供”，不能变成未作答、判错或空字段。纯求解不生成批改事实。
+- 内容包1.1.0使用profile API 2与v2输入；宿主同时支持v1/v2，已接纳任务仍读自己的冻结资源。v0.0.11中原1.0.0包及旧PDF不重写。
 
 ## 版面与资产
 

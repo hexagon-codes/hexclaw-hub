@@ -9,11 +9,12 @@
     "branding",
     "source_images",
     "questions",
-    "deep"
+    "deep",
+    "source_text"
   ],
   "properties": {
     "schema_version": {
-      "const": "homework-report-render-v1"
+      "const": "homework-report-render-v2"
     },
     "document": {
       "type": "object",
@@ -23,7 +24,8 @@
         "agent_name",
         "grade_term",
         "subject",
-        "date"
+        "date",
+        "source_kind"
       ],
       "properties": {
         "title": {
@@ -44,6 +46,12 @@
         },
         "example_label": {
           "type": "string"
+        },
+        "source_kind": {
+          "enum": [
+            "grading",
+            "text_solve"
+          ]
         }
       }
     },
@@ -147,6 +155,12 @@
             }
           }
         }
+      }
+    },
+    "source_text": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/block"
       }
     }
   },

@@ -57,13 +57,13 @@
   } else { candidate }
 })
 
-#let quick-question(q, formulas, first: false) = block(
+#let quick-question(q, formulas, first: false, source-kind: "grading") = block(
   above: if first { 0pt } else { 10pt }, below: 4pt, breakable: true, width: 100%,
 )[
   #block(sticky: true)[
     #grid(columns: (1fr, auto), align: horizon, column-gutter: 8pt,
       [#if q.number != "" { label(q.number, size: 12pt, fill: blue); h(6pt) }#label(q.title, size: 11.5pt)],
-      [#text(font: sans, size: 8.5pt, fill: muted)[批改状态：]#badge(q.status)],
+      [#text(font: sans, size: 8.5pt, fill: muted, if source-kind == "text_solve" { "解题状态：" } else { "批改状态：" })#badge(q.status)],
     )
     #v(5pt)
   ]
@@ -192,7 +192,7 @@
 ]
 
 #let render-report(data, formulas: (:)) = {
-  assert(data.schema_version == "homework-report-render-v1", message: "Unsupported report schema")
+  assert(data.schema_version == "homework-report-render-v2", message: "Unsupported report schema")
   let doc = data.document
   let brand = data.branding
   set document(title: doc.title, author: "HexClaw", date: none)
@@ -220,7 +220,9 @@
     ])
   show math.equation: set text(font: (math-font, serif))
   show math.equation.where(block: true): set block(above: 4pt, below: 4pt)
-  let metadata = (doc.grade_term, doc.subject, if doc.date == "" { "" } else { "批改日期：" + doc.date }).filter(value => value != "").join(" · ")
+  let source-kind = doc.source_kind
+  let date-label = if source-kind == "text_solve" { "生成日期：" } else { "批改日期：" }
+  let metadata = (doc.grade_term, doc.subject, if doc.date == "" { "" } else { date-label + doc.date }).filter(value => value != "").join(" · ")
   let heading-content = [
     #report-heading(doc.title, metadata)
     #if doc.at("example_label", default: "") != "" {
@@ -240,9 +242,13 @@
       ]
     })
     for source in data.source_images.slice(1) { full-image(source.path, source.alt) }
-  } else { heading-content }
+  } else {
+    heading-content
+    // 纯文字原题沿现有正文与公式块排版，完整保留后再进入答案区。
+    for node in data.source_text { block-content(node, formulas) }
+  }
   section("一、快速解答")
-  for (index, q) in data.questions.enumerate() { quick-question(q, formulas, first: index == 0) }
+  for (index, q) in data.questions.enumerate() { quick-question(q, formulas, first: index == 0, source-kind: source-kind) }
   if data.deep.steps.len() > 0 {
     // 两层自然续排；不把少量内容强推到新页或强制固定页数。
     section("二、深度讲解")

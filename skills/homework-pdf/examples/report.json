@@ -1,12 +1,13 @@
 {
-  "schema_version": "homework-report-render-v1",
+  "schema_version": "homework-report-render-v2",
   "document": {
     "title": "作业讲解示例",
     "agent_name": "小学辅导助手",
     "grade_term": "六年级上册",
     "subject": "数学",
     "date": "",
-    "example_label": "AI 生成示例 · 非真实学生作业"
+    "example_label": "AI 生成示例 · 非真实学生作业",
+    "source_kind": "grading"
   },
   "branding": {
     "name": "HexClaw 河蟹 AI",
@@ -272,5 +273,6 @@
         ]
       }
     ]
-  }
+  },
+  "source_text": []
 }
