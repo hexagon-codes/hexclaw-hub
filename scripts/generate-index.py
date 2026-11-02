@@ -54,9 +54,12 @@ def parse_frontmatter(text):
         key, val = m_kv.group(1), m_kv.group(2).strip()
         cur_list_key = None
         if val == "":
-            # 后续可能是多行列表
-            cur_list_key = key
-            meta[key] = []
+            # 已声明的标量空值用于清除旧值，其余键保留多行列表解析。
+            if key in SCALAR_FIELDS:
+                meta[key] = ""
+            else:
+                cur_list_key = key
+                meta[key] = []
         elif val.startswith("[") and val.endswith("]"):
             inner = val[1:-1].strip()
             meta[key] = [x.strip().strip("\"'") for x in inner.split(",") if x.strip()] if inner else []
@@ -99,7 +102,8 @@ def main():
     prev_entry = {}
     if os.path.exists(INDEX_PATH):
         try:
-            old = json.load(open(INDEX_PATH, encoding="utf-8"))
+            with open(INDEX_PATH, encoding="utf-8") as fp:
+                old = json.load(fp)
             for s in old.get("skills", []):
                 prev_entry[s.get("name")] = s
         except Exception:
@@ -114,17 +118,18 @@ def main():
         path = os.path.join(SKILLS_DIR, relative)
         if not os.path.isfile(path) or not relative.endswith(".md"):
             continue
-        content = open(path, "rb").read()
+        with open(path, "rb") as fp:
+            content = fp.read()
         meta = parse_frontmatter(content.decode("utf-8"))
         if not meta or not meta.get("name"):
             errors.append(f"{fn}: 缺 frontmatter/name")
             continue
         base = dict(prev_entry.get(meta["name"], {}))  # 历史字段基底
         for f in SCALAR_FIELDS:
-            if meta.get(f):
+            if f in meta:
                 base[f] = meta[f]  # frontmatter 覆盖（新字段的真相源）
         for f in LIST_FIELDS:
-            if meta.get(f):
+            if f in meta:
                 base[f] = meta[f]
         base["file"] = f"skills/{relative}"
         base["sha256"] = hashlib.sha256(content).hexdigest()
