@@ -40,6 +40,8 @@ hexclaw-hub/
 
 `mcp-registry.json` 收录了 59 个 MCP 服务器，涵盖 21 个分类。所有可执行条目必须固定精确包版本和官方 registry 完整性；当前 49 个为 `pinned`，10 个上游包已不存在并标为 `quarantined`，隔离条目不得进入安装/执行链。
 
+PyPI 条目可在 `artifact.dependency_constraint` 中声明一个已核对的命名包版本约束。命令必须且只能使用一组 `--with` 加同一个完整字符串；主包的精确版本、完整性和来源绑定保持。该字段不接纳 URL、本地路径或额外索引，未声明时仍拒绝 `--with`。例如天气服务保留 `mcp_weather_server==0.6.1`，仅将其已有 MCP 依赖约束为 `mcp[cli]>=1.12.0,<2`；这不表示锁定或验证了所有传递依赖的最终字节。
+
 | 分类 | 服务器 |
 |------|--------|
 | 推理增强 | Sequential Thinking |
@@ -81,7 +83,7 @@ HexClaw 引擎只应从发布 BOM 固定的不可变 tag/commit 拉取索引、�
 - `status=pinned` 才允许安装；`status=quarantined` 必须带 `quarantine_reason`，运行时 fail-closed。
 - npm 参数必须绑定 `package@exact-version`，并记录官方 registry 返回的 SHA-512 SRI。
 - PyPI 参数必须绑定 `package==exact-version`，并记录官方 release SHA-256。
-- `artifact` 只证明包身份和内容完整性，不代表代码已经安全审计；运行时仍必须使用最小环境、文件 capability 和受控网络出口。
+- `artifact` 声明准入所需的包身份、固定版本及官方摘要，不代表安装器已核验实际下载字节，也不代表代码已经安全审计；实际完整性校验与运行权限以宿主实现和执行回执为准。
 - 修改 registry 后必须运行 `python3 scripts/validate-mcp-registry.py`，并同步 HexClaw 的 embedded registry；普通测试不得自动更新 lock 或 golden。
 
 ## 技能格式

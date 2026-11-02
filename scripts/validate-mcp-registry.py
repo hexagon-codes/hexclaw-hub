@@ -28,6 +28,7 @@ DANGEROUS_ARG_CHARS = set("`$|;&><(){}!\\'\"\n\r\x00")
 DANGEROUS_CMD_CHARS = DANGEROUS_ARG_CHARS | {"~"}
 EXACT_VERSION = re.compile(r"^(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:[-+][0-9A-Za-z.-]+)?$")
 EXACT_PYPI_VERSION = re.compile(r"^[0-9][0-9A-Za-z.!+_-]*$")
+DEPENDENCY_CONSTRAINT = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*(\[[A-Za-z0-9][A-Za-z0-9._-]*(,[A-Za-z0-9][A-Za-z0-9._-]*)*\])?((==|!=)[0-9][0-9A-Za-z.!+_*-]*|(~=|<=|>=|<|>)[0-9][0-9A-Za-z.!+_-]*)(,((==|!=)[0-9][0-9A-Za-z.!+_*-]*|(~=|<=|>=|<|>)[0-9][0-9A-Za-z.!+_-]*))*$")
 IMMUTABLE_ACTION = re.compile(r"^[^\s#]+@[0-9a-f]{40}(?:\s*#.*)?$")
 MUTABLE_RUNNER = re.compile(r"\b(?:ubuntu|macos|windows)-latest\b")
 
@@ -42,6 +43,34 @@ def server(reg, name):
         if s.get("name") == name:
             return s
     raise AssertionError(f"registry 缺少 server: {name}")
+
+
+def dependency_constraint_argument(s):
+    """返回唯一声明约束的参数位置，其它参数继续原校验。"""
+    artifact = s.get("artifact") or {}
+    value = artifact.get("dependency_constraint", "")
+    if value is None:
+        value = ""
+    assert isinstance(value, str), "dependency_constraint must be a string"
+    if value:
+        assert s.get("command") == "uvx" and artifact.get("ecosystem") == "pypi", "Dependency constraints require a PyPI uvx entry"
+        assert DEPENDENCY_CONSTRAINT.fullmatch(value), "Invalid named dependency constraint"
+    if s.get("command") != "uvx":
+        return None
+    args = s.get("args", [])
+    position = None
+    for i, arg in enumerate(args):
+        if arg == "--with":
+            assert position is None and value and i + 1 < len(args) and args[i + 1] == value, "Unreviewed or repeated dependency constraint"
+            position = i + 1
+        else:
+            assert arg not in {"--with-editable", "-r", "--requirements", "--index-url", "--extra-index-url", "--find-links"}, "Unreviewed dependency source"
+            assert not arg.startswith(("--with=", "--requirements=", "--index-url=", "--extra-index-url=", "--find-links=")), "Unreviewed dependency source"
+    assert not value or position is not None, "Declared dependency constraint is missing from arguments"
+    if value:
+        primary = artifact.get("package", "") + "==" + artifact.get("version", "")
+        assert any(i != position and arg == primary for i, arg in enumerate(args)), "Dependency constraint does not bind the main artifact"
+    return position
 
 
 def test_structure():
@@ -82,8 +111,12 @@ def test_every_server_valid_shape():
         assert not (set(cmd) & DANGEROUS_CMD_CHARS), f"{name}: command 含危险字符"
         args = s.get("args", [])
         assert isinstance(args, list), f"{name}: args 必须为数组"
-        for a in args:
+        constrained = dependency_constraint_argument(s) if s.get("status") == "pinned" else None
+        for i, a in enumerate(args):
             assert isinstance(a, str), f"{name}: arg 非字符串: {a!r}"
+            # 精确声明的版本约束可包含比较符，其余参数保持既有字符规则。
+            if i == constrained:
+                continue
             bad = set(a) & DANGEROUS_ARG_CHARS
             assert not bad, f"{name}: arg {a!r} 含后端会拒的危险字符 {bad}"
         env = s.get("env")
@@ -104,6 +137,7 @@ def test_every_executable_dependency_is_exactly_pinned():
             continue
         artifact = s.get("artifact")
         assert isinstance(artifact, dict), f"{name}: 缺少 artifact 供应链元数据"
+        dependency_constraint_argument(s)
         ecosystem = artifact.get("ecosystem")
         assert ecosystem in {"npm", "pypi"}, f"{name}: artifact.ecosystem 非法: {ecosystem!r}"
         package = artifact.get("package", "")
@@ -135,6 +169,38 @@ def test_every_executable_dependency_is_exactly_pinned():
                 f"{name}: PyPI artifact.integrity 必须是 sha256:<64 hex>"
             )
             assert f"{package}=={version}" in s.get("args", []), f"{name}: argv 未绑定精确 PyPI artifact"
+
+
+def test_declared_dependency_constraint():
+    value = "sdk-core[cli]>=1.12.0,<2"
+    entry = {"command": "uvx", "args": ["--with", value, "--from", "fixture-server==0.6.1"], "artifact": {"ecosystem": "pypi", "package": "fixture-server", "version": "0.6.1", "dependency_constraint": value}}
+    assert dependency_constraint_argument(entry) == 1, "Declared constraint was not bound"
+    assert dependency_constraint_argument({"command": "uvx", "args": ["fixture-server==0.6.1"]}) is None, "Legacy arguments changed"
+
+
+def test_unreviewed_dependency_constraints_rejected():
+    value = "sdk-core[cli]>=1.12.0,<2"
+    base = ["--from", "fixture-server==0.6.1"]
+    cases = [
+        ("undeclared", "", ["--with", value] + base),
+        ("mismatched", value, ["--with", "sdk-core>=2"] + base),
+        ("duplicate", value, ["--with", value, "--with", value] + base),
+        ("omitted", value, base),
+        ("direct URL", "sdk-core@https://example.invalid/sdk.whl", ["--with", "sdk-core@https://example.invalid/sdk.whl"] + base),
+        ("local path", "/tmp/sdk-core", ["--with", "/tmp/sdk-core"] + base),
+        ("missing version", "sdk-core", ["--with", "sdk-core"] + base),
+        ("joined flag", value, ["--with=" + value] + base),
+        ("extra index", value, ["--with", value, "--index-url", "https://example.invalid"] + base),
+        ("requirements file", value, ["--with", value, "--requirements", "/tmp/requirements.txt"] + base),
+        ("main artifact only in constraint", "fixture-server==0.6.1", ["--with", "fixture-server==0.6.1", "python"]),
+    ]
+    for name, declared, args in cases:
+        entry = {"command": "uvx", "args": args, "artifact": {"ecosystem": "pypi", "package": "fixture-server", "version": "0.6.1", "dependency_constraint": declared}}
+        try:
+            dependency_constraint_argument(entry)
+        except AssertionError:
+            continue
+        raise AssertionError(f"Unreviewed dependency configuration was accepted: {name}")
 
 
 def test_no_dead_sqlite_npm_package():
